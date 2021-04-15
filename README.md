@@ -1,6 +1,7 @@
 # CellDART: Cell type inference by domain adaptation of single-cell and spatial transcriptomic data
 CellDART is a tool to estimate cell fraction of spatial transcriptomic spots using domain adaptation of deep neural networks.
 
+![figure1png](https://user-images.githubusercontent.com/14209383/114880774-528b8100-9e3d-11eb-9b60-41c9d0acd5fd.png)
 
 
 ## Code Example
