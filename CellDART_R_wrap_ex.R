@@ -13,7 +13,7 @@ py_config()
 # 3. Install bbknn
 # conda install -c bioconda bbknn
 
-# CellDART_R.py should be in the same directory with da_cellfraction.py and utils.py
+# CellDART_R_wrap.py should be in the same directory with da_cellfraction.py and utils.py
 # set directory for CellDART_R.py, da_cellfraction.py and utils.py
 setwd('/home/user/DATA1/Spatial/')
 
