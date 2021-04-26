@@ -19,14 +19,14 @@ setwd('/home/user/DATA1/Spatial/')
 
 ## RUN CellDART
 # Command for implementing CellDART
-path_os = paste("python ./CellDART/CellDART_R_wrap.py",
+path_os = paste0("python ./CellDART/CellDART_R_wrap.py",
                 " --spdir ./Mouse_sp/ --spfilter T",
                 " --spfilgene 5 --spfilcell 50",
                 " --scdir ./Mouse_sc/ --sc10x_mtx T --sc10x_h5 F --sctranspose F",
                 " --celltype cluster --num_markers 20 --nmix 10",
                 " --npseudo 20000 --alpha 1 --alpha_lr 5 --batch_size 512",
                 " --emb_dim 64 --n_iterations 3000 --init_train_epoch 10",
-                " --outdir ./CellDART_output/", sep = "")
+                " --outdir ./CellDART_output/")
 # RUN
 system(path_os)
 
@@ -44,7 +44,7 @@ system(path_os)
 # -> and metadata with corresponding barcode name as index should be included in metadata folder of each single-cell data
 # -> metadata should be csv format
 ## Example directory (reference)
-# -> one single cell dataset (10x mtx fomat) with metadata
+# -> one single cell dataset (10x mtx format) with metadata
 # ./Mouse_sc/first/barcodes.tsv, ./Mouse_sc/first/genes.tsv, ./Mouse_sc/first/matrix.mtx, ./Mouse_sc/first/metadata/metadata.csv
 
 # sc10x_mtx: check whether single-cell data is 10x genomics formatted mtx directory (T) or not (F)
