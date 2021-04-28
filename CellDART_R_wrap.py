@@ -33,13 +33,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     if args.gpu == 'T':
-        import tensorflow as tf
-        if tf.test.is_gpu_available: 
-            print('GPU is available and will be used')
-            os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-            os.environ["CUDA_VISIBLE_DEVICES"]= "0" # Use only gpu-0
-        else:
-            print('GPU is unavailable: CPU will be used')
+        os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+        os.environ["CUDA_VISIBLE_DEVICES"]= "0" # Use only gpu-0
+        print('GPU is available and will be used')
     else:
         os.environ['CUDA_VISIBLE_DEVICES'] = "-1" # Use CPU
         print('CPU will be used')
