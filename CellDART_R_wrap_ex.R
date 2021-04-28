@@ -33,6 +33,11 @@ system(path_os)
 ## Explanation of the variables
 # spdir: file directory for spatial data 
 # -> Visium data should be separated in different folders
+## Example directory (spatial)
+# -> two spatial datasets (10x visium format)
+# ./Mouse_sp/first/filtered_feature_bc_matrix.h5, ./Mouse_sp/first/spatial/tissue_hires_image.png, ./Mouse_sp/first/spatial/tissue_lowres_image.png,
+# ./Mouse_sp/first/spatial/scalefactors_json.json, ./Mouse_sp/first/spatial/tissue_positions_list.csv
+# second dataset directory starts with ./Mouse_sp/second/.., others are same as above.
 
 # spfilter: check whether to filter the number of cells and genes in spatial data (T: run filter)
 # spfilgene: keep genes that are expressed in at least 'spfilgene' number of cells (default = 5)
@@ -43,9 +48,10 @@ system(path_os)
 # -> each file formats should be among 10x format or others (.mtx.gz, .h5ad, h5, .csv, .tsv, or .txt)
 # -> and metadata with corresponding barcode name as index should be included in metadata folder of each single-cell data
 # -> metadata should be csv format
-## Example directory (reference)
-# -> one single cell dataset (10x mtx format) with metadata
+## Example directory (single-cell)
+# -> two single cell dataset (10x mtx format) with metadata
 # ./Mouse_sc/first/barcodes.tsv, ./Mouse_sc/first/genes.tsv, ./Mouse_sc/first/matrix.mtx, ./Mouse_sc/first/metadata/metadata.csv
+# ./Mouse_sc/second/barcodes.tsv, ./Mouse_sc/second/genes.tsv, ./Mouse_sc/second/matrix.mtx, ./Mouse_sc/first/second/metadata.csv
 
 # sc10x_mtx: check whether single-cell data is 10x genomics formatted mtx directory (T) or not (F)
 # sc10x_h5: check whether single-cell data is 10x genomics formatted hdf5 file (T) or not (F)
