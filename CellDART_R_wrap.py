@@ -6,14 +6,11 @@ import scanpy as sc
 import pandas as pd
 import numpy as np
 
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # run on GPU
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
-import da_cellfraction
-
 from utils import random_mix
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--gpu', type=str, default = 'T')
     parser.add_argument('--spdir', type=str)
     parser.add_argument('--spfilter', type=str, default = 'F')
     parser.add_argument('--spfilgene', type=int, default = 5)
@@ -34,6 +31,11 @@ if __name__ == "__main__":
     parser.add_argument('--init_train_epoch', type=int, default = 10)
     parser.add_argument('--outdir', type=str, default='./CellDART_output/')
     args = parser.parse_args()
+    
+    if args.gpu == 'T':
+        os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # run on GPU
+        os.environ["CUDA_VISIBLE_DEVICES"]="0" # Use only gpu-0
+    import da_cellfraction
     
     if not os.path.exists(args.outdir):
         os.makedirs(args.outdir)
