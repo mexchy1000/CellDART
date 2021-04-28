@@ -124,23 +124,22 @@ if __name__ == "__main__":
     
     # standard preprocessing steps
     sc.pp.log1p(single_all)
-    sc.pp.scale(single_all, max_value=10)
-    sc.tl.pca(single_all, svd_solver='arpack')
+    single_all_ = sc.pp.scale(single_all, max_value=10, copy=True)
+    sc.tl.pca(single_all_, svd_solver='arpack')
 
     if len(adata_sc)==1:
-        sc.pp.neighbors(single_all, n_neighbors=10, n_pcs=40)
-        sc.tl.umap(single_all)
-        sc.tl.leiden(single_all, resolution = 0.5)
+        sc.pp.neighbors(single_all_, n_neighbors=10, n_pcs=40)
+        sc.tl.umap(single_all_)
+        sc.tl.leiden(single_all_, resolution = 0.5)
         
     else:
         import bbknn
-        sc.external.pp.bbknn(single_all, batch_key='batch')
-        sc.tl.umap(single_all)
-        sc.tl.leiden(single_all, resolution = 0.5)
+        sc.external.pp.bbknn(single_all_, batch_key='batch')
+        sc.tl.umap(single_all_)
+        sc.tl.leiden(single_all_, resolution = 0.5)
     
     # Find marker genes for single cell data
-    adata_final = single_all.raw.to_adata()
-    sc.tl.rank_genes_groups(adata_final, args.celltype, method='wilcoxon')
+    sc.tl.rank_genes_groups(single_all, args.celltype, method='wilcoxon')
     genelists=adata_final.uns['rank_genes_groups']['names']
     df_genelists = pd.DataFrame.from_records(genelists)
     
@@ -155,6 +154,7 @@ if __name__ == "__main__":
     inter_genes = [val for val in res_genes_ if val in spatial_all.var.index]
     print('Intersecting gene numbers:',len(inter_genes))
     
+    adata_final = single_all.raw.to_adata()
     adata_final = adata_final[:,inter_genes]
     spatial_all = spatial_all[:,inter_genes]
     
@@ -221,7 +221,7 @@ if __name__ == "__main__":
     clssmodel.save_weights(args.outdir+'Model/classifier.h5')
 
     # AnnData and dataframe save
-    single_all.write_h5ad(args.outdir+'Model/single_cell_proc.h5')
+    single_all_.write_h5ad(args.outdir+'Model/single_cell_proc.h5')
     adata_final.write_h5ad(args.outdir+'Model/single_cell_final.h5')
     spatial_all.write_h5ad(args.outdir+'Model/spatial_final.h5')
     
