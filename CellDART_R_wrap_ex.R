@@ -19,7 +19,7 @@ setwd('/home/user/DATA1/Spatial/')
 
 ## RUN CellDART
 # Command for implementing CellDART
-path_os = paste0("python ./CellDART/CellDART_R_wrap.py",
+path_os = paste0("python ./CellDART/CellDART_R_wrap.py --gpu T",
                 " --spdir ./Mouse_sp/ --spfilter T",
                 " --spfilgene 5 --spfilcell 50",
                 " --scdir ./Mouse_sc/ --sc10x_mtx T --sc10x_h5 F --sctranspose F",
