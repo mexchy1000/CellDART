@@ -31,6 +31,7 @@ path_os = paste0("python ./CellDART/CellDART_R_wrap.py --gpu T",
 system(path_os)
 
 ## Explanation of the variables
+# gpu: check whether to use gpu (T) or not (F) (default = T)
 # spdir: file directory for spatial data 
 # -> Visium data should be separated in different folders
 ## Example directory (spatial)
