@@ -92,7 +92,7 @@ if __name__ == "__main__":
         if (set(tmp.index)<set(adata.obs.index)): 
             print('All barcode names in metadata are found')
         else:
-            print('Unidentified barcode names in metadata of '+str(i))
+            print('Unidentified barcode names in metadata of '+sc_list[i])
             raise NotImplementedError
         if args.celltype not in list(tmp):
             print('Column for cell type is not found')
