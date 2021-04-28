@@ -140,7 +140,7 @@ if __name__ == "__main__":
     
     # Find marker genes for single cell data
     sc.tl.rank_genes_groups(single_all, args.celltype, method='wilcoxon')
-    genelists=adata_final.uns['rank_genes_groups']['names']
+    genelists=single_all.uns['rank_genes_groups']['names']
     df_genelists = pd.DataFrame.from_records(genelists)
     
     # Combining top marker genes representing each cell type
