@@ -178,7 +178,8 @@ if __name__ == "__main__":
     def log_minmaxscale(arr):
         arrd = len(arr)
         arr = np.log1p(arr)
-        return (arr-np.reshape(np.min(arr,axis=1),(arrd,1)))/np.reshape((np.max(arr,axis=1)-np.min(arr,axis=1)),(arrd,1))
+        e = 1e-8
+        return (arr-np.reshape(np.min(arr,axis=1),(arrd,1)))/np.reshape((np.max(arr,axis=1)-np.min(arr,axis=1))+e,(arrd,1))
 
     sc_mix_s = log_minmaxscale(sc_mix)
     mat_sp_s = log_minmaxscale(mat_sp)
