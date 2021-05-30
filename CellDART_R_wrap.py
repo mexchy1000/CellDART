@@ -95,7 +95,7 @@ if __name__ == "__main__":
             raise NotImplementedError
         tmp = pd.read_csv(args.scdir+sc_list[i]+'/metadata/'+sc_meta_list[0],index_col=0)
         
-        if (set(tmp.index)<set(adata.obs.index)): 
+        if (set(tmp.index)<=set(adata.obs.index)): 
             print('All barcode names in metadata are found')
         else:
             print('Unidentified barcode names in metadata of '+sc_list[i])
