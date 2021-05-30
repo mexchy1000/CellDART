@@ -205,7 +205,7 @@ if __name__ == "__main__":
     
     # Save the cell fraction in observation
     for i in range(len(adata_sp)):
-        if len(adata_sc) == 1:
+        if len(adata_sp) == 1:
             adata = spatial_all
         else:
             adata = spatial_all[spatial_all.obs.batch == str(i), :].copy()
