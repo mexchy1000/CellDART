@@ -2,12 +2,6 @@
 import os
 import argparse
 
-import scanpy as sc
-import pandas as pd
-import numpy as np
-
-from utils import random_mix
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--gpu', type=str, default = 'T')
@@ -39,6 +33,11 @@ if __name__ == "__main__":
     else:
         os.environ['CUDA_VISIBLE_DEVICES'] = "-1" # Use CPU
         print('CPU will be used')
+    
+    import scanpy as sc
+    import pandas as pd
+    import numpy as np
+    from utils import random_mix
     import da_cellfraction
     
     if not os.path.exists(args.outdir):
@@ -159,7 +158,10 @@ if __name__ == "__main__":
     spatial_all = spatial_all[:,inter_genes]
     
     # Generation of count matrices
-    mat_sc = adata_final.X.todense()
+    if isinstance(adata_final.X, np.ndarray):
+        mat_sc = np.asmatrix(adata_final.X)
+    else: 
+        mat_sc = adata_final.X.todense()
     mat_sp = spatial_all.X.todense()
     
     # Generation of an array representing cell type number
