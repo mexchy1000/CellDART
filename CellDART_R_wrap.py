@@ -166,7 +166,7 @@ if __name__ == "__main__":
     
     # Generation of an array representing cell type number
     df_sc = adata_final.obs
-    lab_sc_sub = df_sc.cluster
+    lab_sc_sub = df_sc[args.celltype]
     sc_sub_dict = dict(zip(range(len(set(lab_sc_sub))), set(lab_sc_sub)))
     sc_sub_dict2 = dict((y,x) for x,y in sc_sub_dict.items())
     lab_sc_num = [sc_sub_dict2[ii] for ii in lab_sc_sub]
