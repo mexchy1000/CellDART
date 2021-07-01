@@ -61,7 +61,7 @@ def batch_generator(data, batch_size):
 def train( Xs, ys, Xt, yt=None, 
           emb_dim=2,
           batch_size = 64, 
-          enable_da = True, 
+          enable_dann = True, 
           n_iterations = 1000,
           alpha=2,
           alpha_lr=10,
