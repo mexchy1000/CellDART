@@ -7,6 +7,15 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
 ## Code Example
 Example File: CellDART_example_mousebrain_markers.ipynb
 
+## Optimal parameter choices (for brain)
+  Number of total marker genes = 200 ~ 400  
+  Number of pseudospots = 5 to 10 times the number of real spots (20,000~40,000 per Visium slide)
+  Number of cells in a pseudospot (synthetic mixture of single-cell data) = 8  
+  Iteration number = 3,000  
+  Mini-batch size = 512  
+  Loss weights between source and domain classifier (alpha) = 0.6  
+  Learning rate = 0.001 * alpha_lr = 0.005  
+
 ## Dependency
   json 2.0.9  
   numpy 1.17.0  
@@ -20,5 +29,8 @@ Example File: CellDART_example_mousebrain_markers.ipynb
   keras 2.2.4  
 
 ## R Wrapper for CellDART using reticulate 
-  Please find example 'CellDART_R_wrap_ex.R' file. 
+  Please find example 'CellDART_R_wrap_ex.R' file.
+  
+## R shiny application for CellDART
+  ..
   
