@@ -9,8 +9,8 @@ Example File: CellDART_example_mousebrain_markers.ipynb
 
 ## Optimal parameter choices (for brain)
   Number of total marker genes = 200 ~ 400  
-  Number of pseudospots = 5 to 10 times the number of real spots (20,000~40,000 per Visium slide)
-  Number of cells in a pseudospot (synthetic mixture of single-cell data) = 8  
+  Number of pseudospots = 5 to 10 times the number of real spots (20,000~40,000 per Visium slide)  
+  Number of sampled cells in a pseudospot (virtual mixture of single-cell data) = 8  
   Iteration number = 3,000  
   Mini-batch size = 512  
   Loss weights between source and domain classifier (alpha) = 0.6  
