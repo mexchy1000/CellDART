@@ -80,7 +80,7 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
   options(warn = -1)
   
   # Setting virtual environment with reticulate
-  # Check if python 3.7.10 is installed
+  # Check if python 3.7.9 is installed
   reticulate::install_python(version = '3.7.9')
   
   if (!(virtual.env.name %in% reticulate::virtualenv_list())){
