@@ -4,6 +4,11 @@
   When 'pred_cellf_celldart' function defined in 'cellf_pred.R' is running, python and virtual environment will be automatically installed via reticulate  
 
   ** Datasets **  
+  1. Description  
   Example single-cell Seurat object file: sc_data.rds (GSE115746: mouse from ALS and VISp)  
   Example spatial Seurat object file: sp_data.rds  
   (10X Genomics Data Repository: V1_Mouse_Brain_Sagittal_Anterior, V1_Mouse_Brain_Sagittal_Posterior)  
+  
+  2. Download  
+  sc_data.rds and sp_data.rds can be downloaded from:  
+  https://drive.google.com/drive/folders/1cBCeFWvSjxIP1naHBpNZ7nmJV6Ql8OdI?usp=sharing
