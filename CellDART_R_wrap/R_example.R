@@ -46,10 +46,10 @@ if (!file.exists(output_folder_name)){
 
 
 ## Load single-cell and spatial datasets
-# Load single-cell dataset: GSE115746 (mouse single cell: ALS and VISp)
+# Load single-cell dataset (RDS file with Seurat object): GSE115746 (mouse single cell: ALS and VISp)
 sc_data <- readRDS('sc_data.rds')
 
-# Load spatial dataset: 10X genomics data repository
+# Load spatial dataset (RDS file with Seurat object): 10X genomics data repository
 # V1_Mouse_Brain_Sagittal_Anterior
 # V1_Mouse_Brain_Sagittal_Posterior
 sp_data <- readRDS('sp_data.rds')
