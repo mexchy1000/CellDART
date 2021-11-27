@@ -77,7 +77,7 @@ npseudo <- 5*dim(sp_data)[2]
 # spot.cluster.of.interest: name of each spot clusters to be used (default: NULL)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
-# virtual.env.name: name of the conda environment to use for CellDART analysis (default: 'CellDART')
+# virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
 
