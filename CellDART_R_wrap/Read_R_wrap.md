@@ -3,7 +3,7 @@
   All the files in 'CellDART_R_wrap' should be in the same folder.  
   When 'pred_cellf_celldart' function defined in 'cellf_pred.R' is running, python and virtual environment will be automatically installed via reticulate  
 
-  ** Datasets **  
+  ** Datasets **
   1. Description  
   Example single-cell Seurat object file: sc_data.rds (GSE115746: mouse from ALS and VISp)  
   Example spatial Seurat object file: sp_data.rds  
