@@ -31,7 +31,12 @@ Example File: CellDART_example_mousebrain_markers.ipynb
 ## R wrapper for CellDART using reticulate
   Please refer to the '/R_wrap/R_example.R' file.  
   All the files in 'R_wrap' should be in the same folder.  
-  When 'pred_cellf_celldart' function is running, python environment will be automatically installed via reticulate::virtualenv_install  
+  When 'pred_cellf_celldart' function is running, python and virtual environment will be automatically installed via reticulate  
+  
+  ** Datasets **  
+  Example single-cell RDS file: sc_data.rds (GSE115746: mouse from ALS and VISp)  
+  Example spatial RDS file: sp_data.rds  
+  (10X Genomics Data Repository: V1_Mouse_Brain_Sagittal_Anterior, V1_Mouse_Brain_Sagittal_Posterior)  
   
 ## Dependency (R wrapper)
   Seurat 4.0.5  
@@ -40,4 +45,5 @@ Example File: CellDART_example_mousebrain_markers.ipynb
   reticulate 1.22  
   
 ## R shiny application for CellDART
-  ..
+  Shiny application for preprocessing and visualizing datasets and CellDART analysis  
+  Application is mainly based on Seurat, clusterProfiler, EnhancedVolcano, and CellDART  
