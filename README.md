@@ -29,8 +29,8 @@ Example File: CellDART_example_mousebrain_markers.ipynb
   keras 2.2.4
 
 ## R wrapper for CellDART using reticulate
-  Please refer to the '/R_wrap/R_example.R' file.  
-  All the files in 'R_wrap' should be in the same folder.  
+  Please refer to the '/CellDART_R_wrap/R_example.R' file.  
+  All the files in 'CellDART_R_wrap' should be in the same folder.  
   When 'pred_cellf_celldart' function is running, python and virtual environment will be automatically installed via reticulate  
   
 ## Dependency (R wrapper)
