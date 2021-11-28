@@ -77,6 +77,9 @@ npseudo <- 5*dim(sp_data)[2]
 # spot.cluster.of.interest: name of each spot clusters to be used (default: NULL)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
+# python_path: path for the python 3.7. 
+# If NULL, python version 3.7.9 will be installed (valid for Linux) (default: NULL)
+# If "current", python interpreter associated with current virtual env will be used.
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
@@ -112,7 +115,7 @@ sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      sp_subset=FALSE,spot.cluster.name='seurat_clusters',
                                      spot.cluster.of.interest=NULL,
                                      metadata_celltype='cell_subclass',
-                                     virtual.env.name='spatial',gpu=TRUE,
+                                     python_path=NULL,virtual.env.name='spatial',gpu=TRUE,
                                      sp10x=FALSE,spfilter=FALSE,spfilgene=0,spfilspot=0,
                                      sc10x_mtx=FALSE,sc10x_h5=FALSE,sctranspose=FALSE,
                                      seed_num=0, 
