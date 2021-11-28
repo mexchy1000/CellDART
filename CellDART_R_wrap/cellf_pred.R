@@ -97,8 +97,7 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
       reticulate::virtualenv_create(envname = virtual.env.name, python = python_path)
     }
     python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
-                      "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu",
-                      "h5py==2.10.0")
+                      "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
     # Create virtual env and install dependencies
     reticulate::virtualenv_install(virtual.env.name, packages = python_depend,
                                    ignore_installed=T)
