@@ -38,8 +38,8 @@ library(dplyr)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
 # python_path: path for the python 3.7. 
-# If "current", python interpreter associated with current virtual env will be used.
 # If NULL, python version 3.7.9 will be installed (valid for Linux) (default: NULL)
+# If "current", python interpreter associated with current virtual env will be used.
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
