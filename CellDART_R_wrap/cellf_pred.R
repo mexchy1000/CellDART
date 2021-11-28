@@ -37,6 +37,9 @@ library(dplyr)
 # spot.cluster.of.interest: name of each spot clusters to be used (default: NULL)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
+# python_path: path for the python 3.7. 
+# If "current", python interpreter associated with current virtual env will be used.
+# If NULL, python version 3.7.9 will be installed (valid for Linux) (default: NULL)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
@@ -69,7 +72,8 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
                                 spdir=NULL,scdir=NULL,
                                 sp_subset=T,spot.cluster.name='seurat_clusters',
                                 spot.cluster.of.interest=NULL,metadata_celltype='celltype',
-                                virtual.env.name='CellDART',gpu=T,sp10x=T,spfilter=F,spfilgene=0,
+                                python_path=NULL,virtual.env.name='CellDART',
+                                gpu=T,sp10x=T,spfilter=F,spfilgene=0,
                                 spfilspot=0,sc10x_mtx=F,sc10x_h5=F,sctranspose=F,
                                 num_markers=8,seed_num=0,
                                 nmix=10,npseudo=20000,alpha=1,alpha_lr=5,
@@ -85,9 +89,16 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
   
   if (!(virtual.env.name %in% reticulate::virtualenv_list())){
     ## Python dependencies use python version 3.7
-    reticulate::virtualenv_create(envname = virtual.env.name, version = '3.7.9')
+    if (is.null(python_path)){
+      reticulate::virtualenv_create(envname = virtual.env.name, version = '3.7.9')
+    } else if (python_path=="current") {
+      reticulate::virtualenv_create(envname = virtual.env.name, python = NULL)
+    } else {
+      reticulate::virtualenv_create(envname = virtual.env.name, version = python_path)
+    }
     python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
-                      "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
+                      "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu",
+                      "h5py==2.10.0")
     # Create virtual env and install dependencies
     reticulate::virtualenv_install(virtual.env.name, packages = python_depend,
                                    ignore_installed=T)
