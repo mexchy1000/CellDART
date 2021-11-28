@@ -1,7 +1,10 @@
 ## R wrap function for CellDART
   Please refer to the 'R_example.R' file.  
   All the files in 'CellDART_R_wrap' should be in the same folder.  
-  When 'pred_cellf_celldart' function defined in 'cellf_pred.R' is running, python and virtual environment will be automatically installed via reticulate  
+  When 'pred_cellf_celldart' function defined in 'cellf_pred.R' is running, python or virtual environment will be automatically installed via reticulate.  
+  Python will be automatically installed via reticulate::python_install on Linux if python_path = NULL (Tested on Ubuntu 18.04.5 LTS)  
+  Python path can be used to install virtual environment by python_path = [python version 3.7: python.exe path]
+  Python installed for r-reticulate can be used by python_path = "current"; however, version should be 3.7 for virtual environement should be successfully installed.  
 
   ** Datasets **
   1. Description  
