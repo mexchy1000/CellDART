@@ -141,7 +141,7 @@ colnames(sp_data_cellf.mod@meta.data) <- cellf.data.colname
 
 # Visualize the layer-specific excitatory neuons
 cell_types <- c("L2.3.IT","L4","L5.IT","L5.PT","L6b","L6.CT","L6.IT")
-p <- SpatialFeaturePlot(sp_data_cellf.mod, features = cell_types, 
-                        ncol = 4, alpha=0.6, combine = FALSE)
+p <- Seurat::SpatialFeaturePlot(sp_data_cellf.mod, features = cell_types, 
+                                ncol = 4, alpha=0.6, combine = FALSE)
 
 patchwork::wrap_plots(p, ncol = 8)
