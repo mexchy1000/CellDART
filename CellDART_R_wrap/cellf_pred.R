@@ -94,7 +94,7 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
     } else if (python_path=="current") {
       reticulate::virtualenv_create(envname = virtual.env.name, python = NULL)
     } else {
-      reticulate::virtualenv_create(envname = virtual.env.name, version = python_path)
+      reticulate::virtualenv_create(envname = virtual.env.name, python = python_path)
     }
     python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
                       "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu",
