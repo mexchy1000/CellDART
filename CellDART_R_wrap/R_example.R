@@ -122,7 +122,7 @@ sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      n_iterations=3000, init_train_epoch=10)
 
 ## Save seurat object with cell fraction
-saveRDS(sp_data_cellf, file.path('CellDART_output', 'sp_data_cellf.rds'))
+saveRDS(sp_data_cellf, file.path(output_folder_name, 'sp_data_cellf.rds'))
 
 
 
