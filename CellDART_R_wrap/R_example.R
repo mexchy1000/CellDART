@@ -28,7 +28,7 @@ library(Seurat)
 
 # Find the directory for active script file (file_path)
 file_path <- rstudioapi::getSourceEditorContext()$path
-file_path <- strsplit(file_path, split='/')
+file_path <- strsplit(file_path, split=.Platform$file.sep)
 file_path <- paste(file_path[[1]][-length(file_path[[1]])],
                     collapse=.Platform$file.sep)
 
