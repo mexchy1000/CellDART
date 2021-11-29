@@ -45,7 +45,7 @@ library(dplyr)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # 2. In case of env.select == 'conda'
-# conda.evn.name: name of the conda environemt (already installed with Anaconda) to use for CellDART analysis
+# conda.evn.name: name of the conda environemt (already installed with Anaconda) to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
 
@@ -77,8 +77,9 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
                                 spdir=NULL,scdir=NULL,
                                 sp_subset=T,spot.cluster.name='seurat_clusters',
                                 spot.cluster.of.interest=NULL,metadata_celltype='celltype',
-                                env.select="virtual",
+                                env.select='virtual',
                                 python_path=NULL,virtual.env.name='CellDART',
+                                conda.env.name='CellDART',
                                 gpu=T,sp10x=T,spfilter=F,spfilgene=0,
                                 spfilspot=0,sc10x_mtx=F,sc10x_h5=F,sctranspose=F,
                                 num_markers=20,seed_num=0,
