@@ -4,6 +4,7 @@
   When 'pred_cellf_celldart' function defined in 'cellf_pred.R' is running, python or virtual environment will be automatically installed via reticulate.  
   Python will be automatically installed via reticulate::install_python on Linux if python_path = NULL (Tested on Ubuntu 18.04.5 LTS)  
   Python path can be given to install virtual environment by setting python_path = [python version 3.7: python.exe path]  
+  (example: python_path = ~\\Anaconda3\\envs\\spatial\\python.exe)  
   Python installed in r-reticulate can be used by setting python_path = "current"; however, the version should be 3.7 for the virtual environement to be successfully installed.  
 
   ** Datasets **
