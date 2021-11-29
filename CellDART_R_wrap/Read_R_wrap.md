@@ -11,6 +11,8 @@
   
   2. Using conda environment (env.select == 'conda'): recommended for Windows  
   Conda environment should already be installed in Anaconda and it will be loaded for CellDART analysis.  
+  Python dependencies: "scanpy==1.5.1","numba==0.52.0","pandas","numpy",
+                       "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu"  
 
   ** Datasets **
   1. Description  
