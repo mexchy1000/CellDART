@@ -77,10 +77,15 @@ npseudo <- 5*dim(sp_data)[2]
 # spot.cluster.of.interest: name of each spot clusters to be used (default: NULL)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
+# env.select: select between using reticulate virtual environment or conda environment ("virtual" or "conda")
+# 1. In case of env.select == 'virtual'
 # python_path: path for the python 3.7. (default: NULL)
 # If NULL, python version 3.7.9 will be installed (valid for Linux) 
-# If "current", python interpreter associated with current virtual env will be used. (version should be 3.7)
+# If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
+
+# 2. In case of env.select == 'conda'
+# conda.evn.name: name of the conda environemt (already installed with Anaconda) to use for CellDART analysis
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
 
@@ -108,6 +113,7 @@ npseudo <- 5*dim(sp_data)[2]
 # n_iterations: iteration number for the adversarial learning (default = 3000)
 # init_train_epoch: iteration number of pre-train (default = 10)
 
+## 1. Example for using reticulate virtual environment (tested on Ubuntu 18.04.5 LTS)
 sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      outdir=file.path(output_folder_name),
                                      sp_data=sp_data, sc_data=sc_data,
@@ -115,7 +121,27 @@ sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      sp_subset=FALSE,spot.cluster.name='seurat_clusters',
                                      spot.cluster.of.interest=NULL,
                                      metadata_celltype='cell_subclass',
+                                     env.select="virtual",
                                      python_path=NULL,virtual.env.name='spatial',gpu=TRUE,
+                                     sp10x=FALSE,spfilter=FALSE,spfilgene=0,spfilspot=0,
+                                     sc10x_mtx=FALSE,sc10x_h5=FALSE,sctranspose=FALSE,
+                                     seed_num=0, 
+                                     num_markers=20, nmix=8, npseudo=npseudo,
+                                     alpha=0.6, alpha_lr=5,
+                                     emb_dim=64,batch_size=512,
+                                     n_iterations=3000, init_train_epoch=10)
+
+## 2. Example for using reticulate virtual environment (tested on Windows 10): recommended for Windows
+# Conda environment should be already installed via Anaconda
+sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
+                                     outdir=file.path(output_folder_name),
+                                     sp_data=sp_data, sc_data=sc_data,
+                                     spdir=NULL,scdir=NULL,
+                                     sp_subset=FALSE,spot.cluster.name='seurat_clusters',
+                                     spot.cluster.of.interest=NULL,
+                                     metadata_celltype='cell_subclass',
+                                     env.select="conda",
+                                     conda.env.name='spatial',gpu=TRUE,
                                      sp10x=FALSE,spfilter=FALSE,spfilgene=0,spfilspot=0,
                                      sc10x_mtx=FALSE,sc10x_h5=FALSE,sctranspose=FALSE,
                                      seed_num=0, 
