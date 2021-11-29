@@ -37,10 +37,15 @@ library(dplyr)
 # spot.cluster.of.interest: name of each spot clusters to be used (default: NULL)
 # metadata_celltype: column name for single-cell annotation data in metadata (default: 'celltype')
 
+# env.select: select between using reticulate virtual environment or conda environment ("virtual" or "conda")
+# 1. In case of env.select == 'virtual'
 # python_path: path for the python 3.7. (default: NULL)
 # If NULL, python version 3.7.9 will be installed (valid for Linux) 
 # If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
+
+# 2. In case of env.select == 'conda'
+# conda.evn.name: name of the conda environemt (already installed with Anaconda) to use for CellDART analysis
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
 
@@ -83,30 +88,38 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
   defaultW <- getOption("warn") 
   options(warn = -1)
   
-  # Setting virtual environment with reticulate
-  # Check if python 3.7.9 is installed
-  if (is.null(python_path)){
-    reticulate::install_python(version = '3.7.9')
-  }
-  
-  if (!(virtual.env.name %in% reticulate::virtualenv_list())){
-    ## Python dependencies use python version 3.7
+  # Select between using reticulate virtual environment or conda environment ("virtual" or "conda")
+  if (env.select=="virtual"){
+    # Setting virtual environment with reticulate
+    # Check if python 3.7.9 is installed
     if (is.null(python_path)){
-      reticulate::virtualenv_create(envname = virtual.env.name, version = '3.7.9')
-    } else if (python_path=="current") {
-      reticulate::virtualenv_create(envname = virtual.env.name, python = NULL)
-    } else {
-      reticulate::virtualenv_create(envname = virtual.env.name, python = python_path)
+      reticulate::install_python(version = '3.7.9')
     }
-    python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
-                      "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
-    # Create virtual env and install dependencies
-    reticulate::virtualenv_install(virtual.env.name, packages = python_depend,
-                                   ignore_installed=T)
+  
+    if (!(virtual.env.name %in% reticulate::virtualenv_list())){
+      ## Python dependencies use python version 3.7
+      if (is.null(python_path)){
+        reticulate::virtualenv_create(envname = virtual.env.name, version = '3.7.9')
+      } else if (python_path=="current") {
+        reticulate::virtualenv_create(envname = virtual.env.name, python = NULL)
+      } else {
+        reticulate::virtualenv_create(envname = virtual.env.name, python = python_path)
+      }
+      python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
+                        "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
+      # Create virtual env and install dependencies
+      reticulate::virtualenv_install(virtual.env.name, packages = python_depend,
+                                     ignore_installed=T)
+      reticulate::use_virtualenv(virtual.env.name, required = T)
+    }
+    # Apply virtual environment
     reticulate::use_virtualenv(virtual.env.name, required = T)
+  } else if (env.select=="conda"){
+    # Apply conda environment
+    reticulate::use_condaenv(conda.env.name, required = T)
+  } else {
+    stop("'env.select' should be either 'virtual' or 'conda'")
   }
-  # Apply virtual environment
-  reticulate::use_virtualenv(virtual.env.name, required = T)
   
   
   if (!is.null(sc_data)){
