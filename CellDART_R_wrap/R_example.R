@@ -131,7 +131,7 @@ sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      emb_dim=64,batch_size=512,
                                      n_iterations=3000, init_train_epoch=10)
 
-## 2. Example for using reticulate virtual environment (tested on Windows 10): recommended for Windows
+## 2. Example for using conda environment (tested on Windows 10): recommended for Windows
 # Conda environment should be already installed via Anaconda
 sp_data_cellf <- pred_cellf_celldart(celldart.dir='CellDART_R_wrap.py',
                                      outdir=file.path(output_folder_name),
