@@ -60,7 +60,7 @@ library(dplyr)
 # nmix: sampling number of cells in pseudospot (default = 8)
 # npseudo: a total number of pseudospots (default = 20000)
 
-# alpha: loss weights of domain classifier to source classifier
+# alpha: loss weights of domain classifier to source classifier (default = 0.6)
 # alpha_lr: learning rate for domain classifier (alpha_lr*0.001, default = 5)
 # batch_size: minibatch size during the training (default = 512)
 # emb_dim: output size of dimensions for feature extractor (default = 64)
@@ -75,8 +75,8 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
                                 python_path=NULL,virtual.env.name='CellDART',
                                 gpu=T,sp10x=T,spfilter=F,spfilgene=0,
                                 spfilspot=0,sc10x_mtx=F,sc10x_h5=F,sctranspose=F,
-                                num_markers=8,seed_num=0,
-                                nmix=10,npseudo=20000,alpha=1,alpha_lr=5,
+                                num_markers=20,seed_num=0,
+                                nmix=8,npseudo=20000,alpha=0.6,alpha_lr=5,
                                 emb_dim=64,batch_size=512,n_iterations=3000,init_train_epoch=10
                                 ){
   # Suppress warnings
