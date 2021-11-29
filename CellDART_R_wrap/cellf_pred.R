@@ -45,7 +45,7 @@ library(dplyr)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # 2. In case of env.select == 'conda'
-# conda.evn.name: name of the conda environemt (already installed with Anaconda) to use for CellDART analysis (default: 'CellDART')
+# conda.evn.name: name of the conda environment (already installed with Anaconda) to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
 
