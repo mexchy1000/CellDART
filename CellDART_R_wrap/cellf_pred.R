@@ -227,7 +227,7 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
     }
   }
   # Saving cell fraction data into the file
-  sp_data_sub <- AddMetaData(sp_data_sub, cellf)
+  sp_data_sub <- Seurat::AddMetaData(sp_data_sub, cellf)
   
   options(warn = defaultW)
   
