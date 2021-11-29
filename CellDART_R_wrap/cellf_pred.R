@@ -39,7 +39,7 @@ library(dplyr)
 
 # python_path: path for the python 3.7. (default: NULL)
 # If NULL, python version 3.7.9 will be installed (valid for Linux) 
-# If "current", python interpreter associated with current virtual env will be used. (version should be 3.7)
+# If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
 # virtual.env.name: name of the virtual environment to use for CellDART analysis (default: 'CellDART')
 
 # gpu: check whether to use gpu (TRUE) or not (FALSE) (default = TRUE)
@@ -85,7 +85,9 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
   
   # Setting virtual environment with reticulate
   # Check if python 3.7.9 is installed
-  reticulate::install_python(version = '3.7.9')
+  if (is.null(python_path)){
+    reticulate::install_python(version = '3.7.9')
+  }
   
   if (!(virtual.env.name %in% reticulate::virtualenv_list())){
     ## Python dependencies use python version 3.7
