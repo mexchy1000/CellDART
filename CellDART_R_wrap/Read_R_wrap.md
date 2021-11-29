@@ -9,7 +9,7 @@
   (example: python_path = ~\\Anaconda3\\envs\\spatial\\python.exe)  
   Python installed in r-reticulate can be used by setting python_path = "current"; however, the version should be 3.7 for the virtual environement to be successfully installed.  
   
-  2. Using conda environment (env.select == 'conda')  
+  2. Using conda environment (env.select == 'conda'): recommended for Windows  
   Conda environment should already be installed in Anaconda and it will be loaded for CellDART analysis.  
 
   ** Datasets **
