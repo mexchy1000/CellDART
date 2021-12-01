@@ -145,7 +145,7 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
   
     ## 2. Saving single-cell data in anndata format
     sceasy::convertFormat(sc_data, from="seurat", to="anndata",
-                          main_layer = 'count',
+                          main_layer = 'counts',
                           outFile=file.path(sc_dir,'a','sc_data.h5ad'))
   } else {
     if (!is.null(scdir)){
