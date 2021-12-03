@@ -23,3 +23,15 @@
   2. Download  
   sc_data.rds and sp_data.rds can be downloaded from:  
   https://drive.google.com/drive/folders/1cBCeFWvSjxIP1naHBpNZ7nmJV6Ql8OdI?usp=sharing
+  
+## Potential error in reticulate::install_python
+  "ModuleNotFoundError: No module named '_ctypes'"  
+  Then try on the below command (suggested from https://stackoverflow.com/questions/27022373)  
+  sudo apt-get -y update  
+  sudo apt-get -y upgrade  
+  sudo apt-get -y dist-upgrade  
+  sudo apt-get -y install build-essential python-dev python-setuptools python-pip python-smbus  
+  sudo apt-get -y install libncursesw5-dev libgdbm-dev libc6-dev  
+  sudo apt-get -y install zlib1g-dev libsqlite3-dev tk-dev  
+  sudo apt-get -y install libssl-dev openssl  
+  sudo apt-get -y install libffi-dev  
