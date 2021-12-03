@@ -226,11 +226,10 @@ pred_cellf_celldart <- function(celldart.dir,outdir,sp_data=NULL,sc_data=NULL,
       cellf <- read.csv(file.path(out_dir,results[i]),header=TRUE,row.names='X')  
     }
   }
-  # Saving cell fraction data into the file
-  sp_data_sub <- Seurat::AddMetaData(sp_data_sub, cellf)
-  
-  options(warn = defaultW)
-  
-  return(sp_data_sub)
-  
+  if (!is.null(sp_data)){
+    # Saving cell fraction data into the file
+    sp_data_sub <- Seurat::AddMetaData(sp_data_sub, cellf)
+    return(sp_data_sub)
+  }
+  options(warn = defaultW)  
 }
