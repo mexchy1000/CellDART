@@ -44,7 +44,7 @@ Example File: CellDART_example_mousebrain_markers.ipynb
 Shiny application for preprocessing and CellDART analysis.  
 Application is based on Seurat, sceasy, dplyr, stringr, vroom, and CellDART.  
 The web application panel consists of main, upload, and analysis sections.  
-Please try among the four URLs for the application **(ID: CellDART, PW: user) ** 
+Please try among the four URLs for the application **(ID: CellDART, PW: user)**  
 URL 1: http://34.64.214.85:3838/CellDART1  
 URL 2: http://34.64.214.85:3838/CellDART2/  
 URL 3: http://34.64.214.85:3838/CellDART3/  
