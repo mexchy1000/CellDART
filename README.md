@@ -44,7 +44,7 @@ Example File: CellDART_example_mousebrain_markers.ipynb
 Shiny application for preprocessing and CellDART analysis.  
 Application is based on Seurat, sceasy, dplyr, stringr, vroom, and CellDART.  
 The web application panel consists of main, upload, and analysis sections.  
-Please try among the four URLs for the application (ID: CellDART, PW: user)  
+Please try among the four URLs for the application **(ID: CellDART, PW: user) ** 
 URL 1: http://34.64.214.85:3838/CellDART1  
 URL 2: http://34.64.214.85:3838/CellDART2/  
 URL 3: http://34.64.214.85:3838/CellDART3/  
@@ -57,8 +57,8 @@ URL 4: http://34.64.214.85:3838/CellDART4/
 (3) Write down the name of the output folder for saving the results and click 'Create'. You can return to the previous folder by entering the according name. Also, you can create multiple folders and save different results in each folder.  
 (4) When the session ends (30 min), all the results will disappear.  
 
-### B. To upload 10X format single-cell or spatial file (*.h5). (<500 MB)  
-To upload 10X data for example, 'filtered_feature_bc_matrix.h5' from your computer, select the corresponding data format (single-cell, spatial, cell metadata) and click 'Browse' button. Use this button only when the data format is 10X formatted hdf5 file.  
+### B. To upload RDS or 10X format single-cell or spatial count matrix (*.rds/*.h5). (<500 MB)  
+To upload rds matrix file for example, 'sparse_matrix.rds' or 10X matrix file for example, 'filtered_feature_bc_matrix.h5' from your computer, select the corresponding data format (single-cell/spatial) and click 'Browse' button. Use this button only when the data format is rds or 10X formatted hdf5 file.  
 
 ### C. To upload tsv/csv/txt format count matrix or metadata file. (<500 MB)  
 (1) Click 'Convert' button in 'Convert to matrix or metadata'. A window will appear.  
