@@ -14,7 +14,32 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
   Learning rate = 0.001 * alpha_lr = 0.005  
 
 ## Code Example  
-Example File: CellDART_example_mousebrain_markers.ipynb  
+Example File: CellDART_example_mousebrain_markers.ipynb 
+
+## Python function for CellDART (pred_cellf_celldart)  
+adata_sp = **pred_cellf_celldart**(adata_sp=None, adata_sc=None, count_from_raw = True,  
+　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
+　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
+　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
+　　　　　　　　　　　　　　　outdir='./CellDART_output', return_anndata=True)
+                               
+**(1) adata_sp:** spatial data (AnnData object) to be used in predicting cell fraction (default: None)  
+**(2) adata_sc:** single-cell data (AnnData object) to be used in making pseudospots (default: None)  
+**(3) count_from_raw:** whether to extract count matrix frow .raw of AnnData  
+-> non-normalized raw count matrix should be contained in the AnnData .raw file  
+-> if False, then utilize the count matrices saved in adata_sp and adata_sc directly  
+**(4) gpu:** check whether to use gpu (True) or not (False) (default = True)  
+**(5) celltype:** column name for single-cell annotation data in .obs (default: 'cluster')  
+**(6) num_markers:** number of selected marker genes in each celltype (default = 20)   
+**(7) nmix:** sampling number of cells in pseudospot (default = 10)  
+**(8) npseudo:** a total number of pseudospots (default = 20,000)  
+**(9) alpha:** loss weights of the domain classifier to the source classifier (default = 0.6)  
+**(10) alpha_lr:** learning rate for the domain classifier (alpha_lr*0.001, default = 5)  
+**(11) batch_size:** minibatch size for pseudospots and spatial data during the training (default = 512)  
+**(12) n_iterations:** iteration number for the adversarial learning (default = 3,000)  
+**(13) init_train_epoch:** iteration number for the pre-training process (default = 10)  
+**(14) outdir:** the directory to save output files (models and results)  
+**(15) return_anndata:** whether to return spatial AnnData file with predicted cell fraction in .obs (default: False)  
 
 ## Dependency (python)
   json 2.0.9  
@@ -68,7 +93,7 @@ To upload rds matrix file for example, 'sparse_matrix.rds' or 10X matrix file fo
 (5) First to check the data composition, click 'Check' to explore the contents (~10rows) of the file uploaded.  
 (6) Change the delimeter if it is not correct.  
 (7) Check if the matrix should be transposed.  
-(8) If the name of the first column is not empty or wrongly assigned (normally, it should be empty or non-meaningful character such as .X) and the column should be shifted.
+(8) If the name of the first column is not empty or wrongly assigned (normally, it should be empty or non-meaningful character such as .X) and the column should be shifted.  
 (9) If you finished checking, then click 'Convert' button to generate data file for CellDART analysis.  
 
 ### D. Download predicted cell fraction.  
