@@ -18,7 +18,7 @@ Example File: CellDART_example_mousebrain_markers.ipynb
 
 ## Python function for CellDART (pred_cellf_celldart)  
 **from pred_cellf_celldart import pred_cellf_celldart**  
-adata_sp = **pred_cellf_celldart**(adata_sp=None, adata_sc=None, count_from_raw = False,  
+adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
 　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
 　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
 　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
