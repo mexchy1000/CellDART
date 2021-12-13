@@ -42,8 +42,6 @@
 # celltype: column name for single-cell annotation data in .obs (default: 'cluster')
 # num_markers: number of selected marker genes in each cell-type (default = 20)
 
-# seed_num: seed to be used in random sampling (default = 0)
-
 # nmix: sampling number of cells in pseudospot (default = 10)
 # npseudo: a total number of pseudospots (default = 20000)
 
@@ -61,7 +59,7 @@
 def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw = True, 
                         gpu=True, spdir=None, sp10x=True, spfilter=False, spfilgene=5, spfilspot=50, 
                         scdir=None, sc_10x_mtx=True, sc10x_h5=False, sctranspose=False, 
-                        celltype='cluster', num_markers=20, seed_num=0,
+                        celltype='cluster', num_markers=20,
                         nmix=10, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512, emb_dim=64, n_iterations=3000, init_train_epoch=10, 
                         outdir='./CellDART_output', return_anndata=False):
 
