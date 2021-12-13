@@ -17,7 +17,8 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
 Example File: CellDART_example_mousebrain_markers.ipynb 
 
 ## Python function for CellDART (pred_cellf_celldart)  
-adata_sp = **pred_cellf_celldart**(adata_sp=None, adata_sc=None, count_from_raw = True,  
+**from pred_cellf_celldart import pred_cellf_celldart**  
+adata_sp = **pred_cellf_celldart**(adata_sp=None, adata_sc=None, count_from_raw = False,  
 　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
 　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
 　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
@@ -25,7 +26,7 @@ adata_sp = **pred_cellf_celldart**(adata_sp=None, adata_sc=None, count_from_raw 
                                
 **(1) adata_sp:** spatial data (AnnData object) to be used in predicting cell fraction (default: None)  
 **(2) adata_sc:** single-cell data (AnnData object) to be used in making pseudospots (default: None)  
-**(3) count_from_raw:** whether to extract count matrix frow .raw of AnnData  
+**(3) count_from_raw:** whether to extract count matrix frow .raw of AnnData (default: False)  
 -> non-normalized raw count matrix should be contained in the AnnData .raw file  
 -> if False, then utilize the count matrices saved in adata_sp and adata_sc directly  
 **(4) gpu:** check whether to use gpu (True) or not (False) (default = True)  
