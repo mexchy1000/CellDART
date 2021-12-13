@@ -56,7 +56,7 @@
 # outdir: the directory to save output files (models and results)
 # return_anndata: return spatial AnnData file with predicted cell fraction in .obs
 
-def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw = True, 
+def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False, 
                         gpu=True, spdir=None, sp10x=True, spfilter=False, spfilgene=5, spfilspot=50, 
                         scdir=None, sc_10x_mtx=True, sc10x_h5=False, sctranspose=False, 
                         celltype='cluster', num_markers=20,
