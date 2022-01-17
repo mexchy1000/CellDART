@@ -24,8 +24,8 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
 　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
 　　　　　　　　　　　　　　　outdir='./CellDART_output', return_anndata=True)
                                
-**(1) adata_sp:** spatial data (AnnData object) to be used in predicting cell fraction (default: None)  
-**(2) adata_sc:** single-cell data (AnnData object) to be used in making pseudospots (default: None)  
+**(1) adata_sp:** spatial data (AnnData object) with raw count matrix to be used in predicting cell fraction (default: None)  
+**(2) adata_sc:** single-cell data (AnnData object) with raw count matrix to be used in making pseudospots (default: None)  
 **(3) count_from_raw:** whether to extract count matrix frow .raw of AnnData (default: False)  
 -> non-normalized raw count matrix should be contained in the AnnData .raw file  
 -> if False, then utilize the count matrices saved in adata_sp and adata_sc directly  
