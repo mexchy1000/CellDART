@@ -91,7 +91,8 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
         if spdir is not None: 
             raise ValueError("'spdir' should be None when 'adata_sp' is provided.")
         if count_from_raw: spatial_all = adata_sp.raw.to_adata()
-        else: spatial_all = adata_sp
+        else: spatial_all = adata_sp.copy()     
+        sc.pp.normalize_total(spatial_all, target_sum=1e4, inplace=True)
         print('Shape of the provided spatial data is',spatial_all.shape)
     else:
         if spdir is None:
@@ -127,12 +128,13 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
         if scdir is not None: 
             raise ValueError("'scdir' should be None when 'adata_sc' is provided.")
         if count_from_raw: single_all = adata_sc.raw.to_adata()
-        else: single_all = adata_sc
+        else: single_all = adata_sc.copy()
 
         # Check if the column for the cell type is included in .obs
         if celltype not in list(single_all.obs):
             raise ValueError('Column for cell type is not found')
-
+        
+        sc.pp.normalize_total(single_all, target_sum=1e4, inplace=True)
         print('Shape of the provided single-cell data is',single_all.shape)
     else:
         if scdir is None:
