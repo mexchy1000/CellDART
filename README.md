@@ -42,14 +42,12 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
 **(14) outdir:** the directory to save output files (models and results)  
 **(15) return_anndata:** whether to return spatial AnnData file with predicted cell fraction in .obs (default: False)  
 
-## Dependency (python)
-  json 2.0.9  
+## Dependency (python)  
   numpy 1.21.6  
-  pandas 1.3.5 
+  pandas 1.3.5  
   tensorflow 1.14.0  
-  ipywidgets 7.5.1  
-  scanpy 1.5.1   
-  seaborn 0.11.2
+  scanpy 1.5.1  
+  seaborn 0.11.2  
   keras 2.3.1  
 
 ## R wrapper for CellDART using reticulate
