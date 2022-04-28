@@ -44,15 +44,13 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
 
 ## Dependency (python)
   json 2.0.9  
-  numpy 1.17.0  
-  pandas 0.25.0  
+  numpy 1.21.6  
+  pandas 1.3.5 
   tensorflow 1.14.0  
   ipywidgets 7.5.1  
-  scanpy 1.5.1  
-  pandas 0.25.0  
-  numpy 1.17.0  
-  seaborn 0.10.1  
-  keras 2.2.4  
+  scanpy 1.5.1   
+  seaborn 0.11.2
+  keras 2.3.1  
 
 ## R wrapper for CellDART using reticulate
   Please refer to the '/CellDART_R_wrap/R_example.R' file.  
