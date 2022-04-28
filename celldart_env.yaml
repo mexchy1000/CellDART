@@ -35,4 +35,4 @@ dependencies:
   - tensorflow-estimator=1.14.0
   - tensorflow-gpu=1.14.0
   - umap-learn=0.5.3
-prefix: C:\Users\USER\Anaconda3\envs\celldart
+prefix: C:\Users\USER\Anaconda3\envs\CellDART
