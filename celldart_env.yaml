@@ -1,4 +1,4 @@
-name: celldart
+name: CellDART
 channels:
   - bioconda
   - conda-forge
