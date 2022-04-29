@@ -50,11 +50,15 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
   scanpy 1.5.1  
   seaborn 0.11.2  
   keras 2.3.1  
+  h5py=2.10.0  
+  
+### Install conda environment
+  conda env create --file celldart_env.yaml  
 
 ## R wrapper for CellDART using reticulate
   Please refer to the '/CellDART_R_wrap/R_example.R' file.  
   All the files in 'CellDART_R_wrap' should be in the same folder.  
-  Reticulate virtual environment or conda environment can be used while running function 'pred_cellf_celldart'  
+  Reticulate virtual environment (by setting ''or conda environment can be used while running function 'pred_cellf_celldart'  
   Detailed explanation is in '/CellDART_R_wrap/Read_R_wrap.md' file.  
   
 ## Dependency (R wrapper)
