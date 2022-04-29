@@ -50,7 +50,7 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
   scanpy 1.5.1  
   seaborn 0.11.2  
   keras 2.3.1  
-  h5py=2.10.0  
+  h5py 2.10.0  
   
 ### Install conda environment
   conda env create --file celldart_env.yaml  
@@ -58,7 +58,7 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
 ## R wrapper for CellDART using reticulate
   Please refer to the '/CellDART_R_wrap/R_example.R' file.  
   All the files in 'CellDART_R_wrap' should be in the same folder.  
-  Reticulate virtual environment (by setting ''or conda environment can be used while running function 'pred_cellf_celldart'  
+  Virtual environment (env.select="virtual") or conda environment (env.select="conda") can be used while running function 'pred_cellf_celldart'  
   Detailed explanation is in '/CellDART_R_wrap/Read_R_wrap.md' file.  
   
 ## Dependency (R wrapper)
@@ -67,15 +67,10 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
   sceasy 0.0.6  
   reticulate 1.22  
   
-## R shiny application for CellDART
-Shiny application for preprocessing and CellDART analysis.  
+## R shiny application for CellDART (under preparation)
+Shiny application for preprocessing and CellDART analysis. (inside 'shiny')  
 Application is based on Seurat, sceasy, dplyr, stringr, vroom, and CellDART.  
-The web application panel consists of main, upload, and analysis sections.  
-Please try among the four URLs for the application **(ID: CellDART, PW: user)**  
-URL 1: http://34.64.214.85:3838/CellDART1  
-URL 2: http://34.64.214.85:3838/CellDART2/  
-URL 3: http://34.64.214.85:3838/CellDART3/  
-URL 4: http://34.64.214.85:3838/CellDART4/  
+The R shiny application panel consists of main, upload, and analysis sections.  
 
 ### 1. Upload files:  
 ### A. Token is proivded for each Shiny sesion.  
