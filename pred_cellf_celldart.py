@@ -141,7 +141,7 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
             raise ValueError("'scdir' should be provided when 'adata_sc' is None")
         # Load single cell data
         sc_list = os.listdir(scdir)
-        if sc10x_mtx:
+        if sc_10x_mtx:
             adata_sc = [sc.read_10x_mtx(os.path.join(scdir,y), cache=True) for y in sc_list]
         elif sc10x_h5:
             adata_sc = [sc.read_10x_h5(os.path.join(scdir,y)) for y in sc_list]
