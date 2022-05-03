@@ -17,7 +17,7 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
 Example File: CellDART_example_mousebrain_markers.ipynb 
 
 ## Python function for CellDART (pred_cellf_celldart)  
-**from pred_cellf_celldart import pred_cellf_celldart**  
+**from CellDART.pred_cellf_celldart import pred_cellf_celldart**  
 adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
 　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
 　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
@@ -52,8 +52,10 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
   keras 2.3.1  
   h5py 2.10.0  
   
-### Install conda environment
+### Install conda environment and CellDART
   conda env create --file celldart_env.yaml  
+  conda activate CellDART  
+  pip install git+https://github.com/mexchy1000/CellDART.git  
 
 ## R wrapper for CellDART using reticulate
   Please refer to the '/CellDART_R_wrap/R_example.R' file.  
