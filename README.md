@@ -52,8 +52,8 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
   keras 2.3.1  
   h5py 2.10.0  
   
-### Install conda environment and CellDART
-  conda env create --file celldart_env.yaml  
+### Install conda environment and CellDART  
+  conda create -n CellDART python=3.7.12 -c conda-forge  
   conda activate CellDART  
   pip install git+https://github.com/mexchy1000/CellDART.git  
 
