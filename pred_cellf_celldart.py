@@ -225,11 +225,11 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     adata_final = single_all.raw.to_adata()
 
     # Generate count matrix for single-cell data (mat_sc)
-    single_all = single_all[:,inter_genes_comb].copy()
-    if isinstance(single_all.X, np.ndarray):
-        mat_sc = single_all.X
+    adata_final = adata_final[:,inter_genes_comb].copy()
+    if isinstance(adata_final.X, np.ndarray):
+        mat_sc = adata_final.X
     else:
-        mat_sc = single_all.X.toarray()
+        mat_sc = adata_final.X.toarray()
 
     # Raw file for merged spatial data
     spatial_raw = spatial_all
