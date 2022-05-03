@@ -6,7 +6,7 @@ setup(
     description = "Cell type inference by domain adaptation of single-cell and spatial transcriptomic data",
     url = "https://github.com/mexchy1000/CellDART.git",
     author = "Hongyoon Choi, Sungwoo Bae",
-    install_requires = ["python==3.7.12", "scanpy==1.5.1","pandas==1.3.5","numpy==1.21.6",
+    install_requires = ["scanpy==1.5.1","pandas==1.3.5","numpy==1.21.6",
                         "h5py==2.10.0", "jupyter",
                         "keras==2.3.1", "tensorflow==1.14.0", "tensorflow-gpu==1.14.0"]
 )
