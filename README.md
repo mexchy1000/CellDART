@@ -14,15 +14,17 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
   Learning rate = 0.001 * alpha_lr = 0.005  
 
 ## Code Example  
-python: CellDART_example_mousebrain_markers.ipynb 
-R wrap: Please refer to the '/vignettes/R_example.R' file
+python: CellDART_example_mousebrain_markers.ipynb  
+R wrap: Please refer to the '/vignettes/R_example.R' file  
 
 ## Python function for CellDART (pred_cellf_celldart)  
 ### Install conda environment and add jupyter kernel  
+```Plain Text
   conda create -n CellDART python=3.7.12 -c conda-forge  
   conda activate CellDART  
   pip install git+https://github.com/mexchy1000/CellDART.git  
   python -m ipykernel install --user --name CellDART --display-name CellDART  
+```
 
 ### Dependency (python)  
 python 3.7  
@@ -37,11 +39,11 @@ h5py 2.10.0
 ### Function and parameters
 ```Plain Text
 from CellDART.pred_cellf_celldart import pred_cellf_celldart  
-adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
-        　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
-        　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
-        　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
-        　　　　　　　　　　　　　　　outdir='./CellDART_output', return_anndata=True)
+adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
+        　　　　　　　　　　　   gpu=True, celltype='cluster', num_markers=20,  
+        　　　　　　　　　　　　 nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
+        　　　　　　　　　　　　 emb_dim=64, n_iterations=3000, init_train_epoch=10,  
+        　　　　　　　　　　　　 outdir='./CellDART_output', return_anndata=True)
 ```        
 **(1) adata_sp:** spatial data (AnnData object) with raw count matrix to be used in predicting cell fraction (default: None)  
 **(2) adata_sc:** single-cell data (AnnData object) with raw count matrix to be used in making pseudospots (default: None)  
@@ -65,18 +67,17 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
     devtools::install_github("mexychy1000/CellDART", force = T)  
     library(CellDART)  
     help(CellDART)  # Explanation for the parameters and short examples
-
+  ### Dependency (R wrapper)
+    Seurat 4.0.5  
+    dplyr 1.0.7  
+    sceasy 0.0.6  
+    reticulate 1.22  
   ### Installation in Linux distributions  
   Virtual environment (env.select="virtual") or conda environment (env.select="conda") will be automatically installed while running function 'pred_cellf_celldart'  
   Detailed explanation is in '/R/Read_R_wrap.md' file.  
   ### Installation in Windows  
   Install conda environment first and then run the function with env.select='conda' and python.install=F   
   
-## Dependency (R wrapper)
-  Seurat 4.0.5  
-  dplyr 1.0.7  
-  sceasy 0.0.6  
-  reticulate 1.22  
   
 ## R shiny application for CellDART (under preparation)
 Shiny application for preprocessing and CellDART analysis. (inside 'shiny')  
