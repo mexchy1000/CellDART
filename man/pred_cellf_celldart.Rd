@@ -5,28 +5,18 @@
 \title{R wrap function to implement CellDART}
 \usage{
 pred_cellf_celldart(
-  celldart.dir,
-  outdir,
-  sp_data = NULL,
-  sc_data = NULL,
-  spdir = NULL,
-  scdir = NULL,
-  sp_subset = T,
+  sp_data,
+  sc_data,
+  outdir = ".",
+  sp_subset = FALSE,
   spot.cluster.name = "seurat_clusters",
   spot.cluster.of.interest = NULL,
-  metadata_celltype = "celltype",
   env.select = "virtual",
+  python_install = F,
   python_path = NULL,
-  virtual.env.name = "CellDART",
-  conda.env.name = "CellDART",
-  gpu = T,
-  sp10x = T,
-  spfilter = F,
-  spfilgene = 0,
-  spfilspot = 0,
-  sc10x_mtx = F,
-  sc10x_h5 = F,
-  sctranspose = F,
+  env.name = "CellDART",
+  gpu = TRUE,
+  metadata_celltype = "celltype",
   num_markers = 20,
   seed_num = 0,
   nmix = 8,
@@ -40,19 +30,17 @@ pred_cellf_celldart(
 )
 }
 \arguments{
-\item{outdir}{the directory to save output files (models and results) (default = '.')}
-
 \item{sp_data}{spatial data (AnnData object) to be used in predicting cell fraction (default: None): count matrix should be non-normalied raw data.}
 
 \item{sc_data}{single-cell data (AnnData object) to be used in making pseudospots (default: None): count matrix should be non-normalied raw data.}
+
+\item{outdir}{the directory to save output files (models and results) (default = '.')}
 
 \item{sp_subset}{whether to subset spatial data and calculate for specific spot cluster (default = FALSE)}
 
 \item{spot.cluster.name}{group name of the cluster used for subsetting spatial data (default: 'seurat_clusters')}
 
 \item{spot.cluster.of.interest}{name of each spot clusters to be used (default: NULL)}
-
-\item{metadata_celltype}{column name for single-cell annotation data in metadata (default: 'celltype')}
 
 \item{env.select}{select between using reticulate virtual environment or conda environment (default: "conda")}
 
@@ -62,7 +50,11 @@ pred_cellf_celldart(
 \item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
 }}
 
+\item{env.name}{name of the virtual or conda environment to use for CellDART analysis (default: 'spSeudoMap')}
+
 \item{gpu}{check whether to use gpu (True) or not (False) (default = True)}
+
+\item{metadata_celltype}{column name for single-cell annotation data in metadata (default: 'celltype')}
 
 \item{num_markers}{number of selected marker genes in each cell-type (default = 20)}
 
@@ -85,8 +77,6 @@ pred_cellf_celldart(
 \item{init_train_epoch}{iteration number for the pre-training process (default = 10)}
 
 \item{python.install}{whether to automatically install python version 3.7.12}
-
-\item{env.name}{name of the virtual or conda environment to use for CellDART analysis (default: 'spSeudoMap')}
 }
 \value{
 spatial data (Seurat object) with predicted cell fraction in metadata (meta.data)
@@ -97,7 +87,7 @@ Cell type inference by domain adaptation of single-cell and spatial transcriptom
 \examples{
 Using conda environment (environment will be automatically installed in Linux distributions)
 If using Windows, then install conda environment first and then run the function below with python.install = F
-sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
+sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
                                      sp_subset=F, spot.cluster.name='seurat_clusters',
                                      spot.cluster.of.interest=NULL,
                                      env.select='conda',python.install=T,
@@ -109,7 +99,7 @@ sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
 
 Using virtual environment (environment will be automatically installed in Linux distributions)
 Not recommended for Windows
-sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
+sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
                                      sp_subset=F, spot.cluster.name='seurat_clusters',
                                      spot.cluster.of.interest=NULL,
                                      env.select='virtual',python.install=T,

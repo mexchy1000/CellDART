@@ -70,31 +70,31 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
   help(pred_cellf_celldart)  # Explanation for the parameters and short examples  
   browseVignettes("CellDART")  # Browse for the vignettes (/doc/introduction.html)
   ```
-    
+
   ```Plain Text
   # Using conda environment (environment will be automatically installed in Linux distributions)
   # If using Windows, then install conda environment first and then run the function below with python.install = F
-  sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
-                                      sp_subset=F, spot.cluster.name='seurat_clusters',
-                                      spot.cluster.of.interest=NULL,
-                                      env.select='conda',python.install=T,
-                                      python_path=NULL, env.name='CellDART',
-                                      gpu=TRUE, metadata_celltype='celltype',
-                                      num_markers=20, seed_num=0,
-                                      nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
-                                      emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
+  sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
+                                       sp_subset=F, spot.cluster.name='seurat_clusters',
+                                       spot.cluster.of.interest=NULL,
+                                       env.select='conda',python.install=T,
+                                       python_path=NULL, env.name='CellDART',
+                                       gpu=TRUE, metadata_celltype='celltype',
+                                       num_markers=20, seed_num=0,
+                                       nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
+                                       emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
 
   # Using virtual environment (environment will be automatically installed in Linux distributions)
   # Not recommended for Windows
-  sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
-                                      sp_subset=F, spot.cluster.name='seurat_clusters',
-                                      spot.cluster.of.interest=NULL,
-                                      env.select='virtual',python.install=T,
-                                      python_path=NULL, env.name='CellDART',
-                                      gpu=TRUE, metadata_celltype='celltype',
-                                      num_markers=20, seed_num=0,
-                                      nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
-                                      emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
+  sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
+                                       sp_subset=F, spot.cluster.name='seurat_clusters',
+                                       spot.cluster.of.interest=NULL,
+                                       env.select='virtual',python.install=T,
+                                       python_path=NULL, env.name='CellDART',
+                                       gpu=TRUE, metadata_celltype='celltype',
+                                       num_markers=20, seed_num=0,
+                                       nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
+                                       emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
   ```
   ### Dependency (R wrapper)
   ```Plain Text

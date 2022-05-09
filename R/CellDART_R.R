@@ -41,7 +41,7 @@
 #' @examples
 #' Using conda environment (environment will be automatically installed in Linux distributions)
 #' If using Windows, then install conda environment first and then run the function below with python.install = F
-#' sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
+#' sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
 #'                                      sp_subset=F, spot.cluster.name='seurat_clusters',
 #'                                      spot.cluster.of.interest=NULL,
 #'                                      env.select='conda',python.install=T,
@@ -53,7 +53,7 @@
 #' 
 #' Using virtual environment (environment will be automatically installed in Linux distributions)
 #' Not recommended for Windows
-#' sp_data_cellf <- pred_cellf_CellDART(sp_data, sc_data, outdir = '.',
+#' sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
 #'                                      sp_subset=F, spot.cluster.name='seurat_clusters',
 #'                                      spot.cluster.of.interest=NULL,
 #'                                      env.select='virtual',python.install=T,
