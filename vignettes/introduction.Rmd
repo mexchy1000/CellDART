@@ -81,7 +81,7 @@ help(CellDART)
 #### If using Windows, then install conda environment first and then run the function below with python.install = F
 
 ```{r}
-# sp_data_cellf <- CellDART::pred_cellf_CellDART(sp_data, sc_data, outdir = file.path(output_folder_name),
+# sp_data_cellf <- CellDART::pred_cellf_celldart(sp_data, sc_data, outdir = file.path(output_folder_name),
 #                                                sp_subset=F, spot.cluster.name='seurat_clusters',
 #                                                spot.cluster.of.interest=NULL,
 #                                                env.select='conda',python.install=T,
@@ -96,7 +96,7 @@ help(CellDART)
 ### Using virtual environment (environment will be automatically installed in Linux distributions)
 #### Not recommended for Windows
 ```{r}
-# sp_data_cellf <- CellDART::pred_cellf_CellDART(sp_data, sc_data, outdir = file.path(output_folder_name),
+# sp_data_cellf <- CellDART::pred_cellf_celldart(sp_data, sc_data, outdir = file.path(output_folder_name),
 #                                                sp_subset=F, spot.cluster.name='seurat_clusters',
 #                                                spot.cluster.of.interest=NULL,
 #                                                env.select='virtual',python.install=T,

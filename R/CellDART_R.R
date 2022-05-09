@@ -175,7 +175,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
                            dimnames = list(rownames(sp_data_sub),NULL)))
   var[['name']] <- rownames(var)
 
-  adata_sp <- scanpy_data$AnnData(
+  adata_sp <- ann$AnnData(
     X = Matrix::t(sparse_mtx),
     obs = obs,
     var = var
