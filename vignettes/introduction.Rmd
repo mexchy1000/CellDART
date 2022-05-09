@@ -15,35 +15,35 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(CellDART)
+# library(CellDART)
 ```
 
 # 0. Install required packages
 ## Install CellDART
 ```{r}
-if (!requireNamespace("CellDART", quietly = TRUE))
-  devtools::install_github("mexchy1000/CellDART")
+# if (!requireNamespace("CellDART", quietly = TRUE))
+#   devtools::install_github("mexchy1000/CellDART")
 ```
 
 
 # 1. Example of using function "pred_cellf_celldart"
 ```{r}
-library(SeuratObject)
-
-# Find the directory for active script file (file_path)
-file_path <- rstudioapi::getSourceEditorContext()$path
-file_path <- strsplit(file_path, split=.Platform$file.sep)
-file_path <- paste(file_path[[1]][-length(file_path[[1]])],
-                    collapse=.Platform$file.sep)
-
-# Set working directory
-setwd(file_path)
-
-# Make output folder
-output_folder_name <- 'CellDART_output'
-if (!file.exists(output_folder_name)){
-  dir.create(output_folder_name)
-}
+# library(SeuratObject)
+# 
+# # Find the directory for active script file (file_path)
+# file_path <- rstudioapi::getSourceEditorContext()$path
+# file_path <- strsplit(file_path, split=.Platform$file.sep)
+# file_path <- paste(file_path[[1]][-length(file_path[[1]])],
+#                     collapse=.Platform$file.sep)
+# 
+# # Set working directory
+# setwd(file_path)
+# 
+# # Make output folder
+# output_folder_name <- 'CellDART_output'
+# if (!file.exists(output_folder_name)){
+#   dir.create(output_folder_name)
+# }
 ```
 
 ## Load single-cell and spatial datasets
