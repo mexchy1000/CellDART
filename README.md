@@ -15,7 +15,7 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
 
 ## Code Example  
 python: CellDART_example_mousebrain_markers.ipynb  
-R wrap: Please refer to the '/vignettes/R_example.R' file  
+R wrap: Please refer to the '/vignettes/introduction.Rmd' file  
 
 ## Python function for CellDART (pred_cellf_celldart)  
 ### Install conda environment and add jupyter kernel  
@@ -25,8 +25,8 @@ R wrap: Please refer to the '/vignettes/R_example.R' file
   pip install git+https://github.com/mexchy1000/CellDART.git  
   python -m ipykernel install --user --name CellDART --display-name CellDART  
 ```
-
 ### Dependency (python)  
+```Plain Text
 python 3.7  
 numpy 1.21.6  
 pandas 1.3.5  
@@ -35,7 +35,7 @@ scanpy 1.5.1
 seaborn 0.11.2  
 keras 2.3.1  
 h5py 2.10.0 
-
+```
 ### Function and parameters
 ```Plain Text
 from CellDART.pred_cellf_celldart import pred_cellf_celldart  
@@ -64,14 +64,18 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
 **(15) return_anndata:** whether to return spatial AnnData file with predicted cell fraction in .obs (default: False)  
 
 ## R wrap function for CellDART using reticulate  
-    devtools::install_github("mexychy1000/CellDART", force = T)  
-    library(CellDART)  
-    help(CellDART)  # Explanation for the parameters and short examples
+  ```Plain Text
+  devtools::install_github("mexychy1000/CellDART", force = T)  
+  library(CellDART)  
+  help(CellDART)  # Explanation for the parameters and short examples
+  ```
   ### Dependency (R wrapper)
-    Seurat 4.0.5  
-    dplyr 1.0.7  
-    sceasy 0.0.6  
-    reticulate 1.22  
+  ```Plain Text
+  Seurat 4.0.5  
+  dplyr 1.0.7  
+  sceasy 0.0.6  
+  reticulate 1.22  
+  ```
   ### Installation in Linux distributions  
   Virtual environment (env.select="virtual") or conda environment (env.select="conda") will be automatically installed while running function 'pred_cellf_celldart'  
   Detailed explanation is in '/R/Read_R_wrap.md' file.  
