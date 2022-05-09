@@ -189,12 +189,12 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
   
   # Run CellDART
   try({
-    df <- CellDART$pred_cellf_celldart$pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw=False, 
+    df <- CellDART$pred_cellf_celldart$pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw=FALSE, 
                                                            gpu=gpu, celltype=metadata_celltype, num_markers=num_markers,
                                                            nmix=nmix, npseudo=npseudo, alpha=alpha, alpha_lr=alpha_lr, 
                                                            batch_size=batch_size, emb_dim=emb_dim, n_iterations=n_iterations,
                                                            init_train_epoch=init_train_epoch, 
-                                                           outdir=out_dir, return_anndata=False)
+                                                           outdir=out_dir, return_anndata=FALSE)
 
     # Saving cell fraction data into the metadata of spatial Seurat object
     sp_data_sub <- Seurat::AddMetaData(sp_data_sub, reticulate::py_to_r(df))
