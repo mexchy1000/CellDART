@@ -1,0 +1,26 @@
+Package: CellDART
+Title: Cell type inference by domain adaptation of single-cell and spatial transcriptomic data
+Version: 1.0.0
+Authors@R: 
+    c(person(given = "Hongyoon",
+           family = "Choi",
+           role = c("aut"),
+           comment = c(ORCID = "0000-0002-8895-2449")),
+    person(given = "Sungwoo",
+           family = "Bae",
+           role = c("aut", "cre"),
+           email = "bsungwoo@snu.ac.kr",
+           comment = c(ORCID = "0000-0002-3484-3749")))
+Description: CellDART estimates the spatial distribution of cells defined by single-cell level data using domain adaptation of neural networks. The neural network that predicts the cell proportion in a pseudospot, a virtual mixture of cells from single-cell data, is translated to decompose the cell types in each spatial barcoded region.
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+      Seurat (>= 4.0.5),
+      dplyr (>= 1.0.7),
+      reticulate (>= 1.22)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr    

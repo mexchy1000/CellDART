@@ -1,12 +1,17 @@
+# Suppress tensorflow warnings
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+from tensorflow.compat.v1 import logging
+logging.set_verbosity(logging.ERROR)
+
 import numpy as np
 from keras.layers import Input, Dense, Activation, BatchNormalization, Dropout, Lambda
 from keras.models import Model
 from keras.utils import to_categorical
-from keras import losses
-from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
-from keras import  optimizers
+from keras import optimizers
 
+### Build deep learning models for adversarial domain adaptation
 def build_models(inp_dim, emb_dim, n_cls_source, alpha=2, alpha_lr=10):
     inputs = Input(shape=(inp_dim,)) 
     x4 = Dense(1024, activation='linear')(inputs)
@@ -46,6 +51,7 @@ def build_models(inp_dim, emb_dim, n_cls_source, alpha=2, alpha_lr=10):
                         
     return comb_model, source_classification_model, domain_classification_model, embeddings_model
 
+### Batch data generator for the given data
 def batch_generator(data, batch_size):
     """Generate batches of data.
     Given a list of numpy data, it iterates over the list and returns batches of the same size
@@ -57,7 +63,21 @@ def batch_generator(data, batch_size):
         tbr = [k[mini_batch_indices] for k in data]
         yield tbr
         
+### Train the neural network to predict cell composition in spatial data
+# Xs: numpy array for composite log-normaized count of pseudospots
+# ys: numpy array for fraction of cell types across the pseudospots
+# Xt: numpy array for log-normaized count of spatial spots
 
+# emb_dim: output size of dimensions for feature extractor (default = 64)
+# batch_size: minibatch size for pseudospots and spatial data during the training (default = 64)
+# enable_dann: whether to use domain adaptation process
+# n_iterations: iteration number for the adversarial learning (default = 3000)
+
+# alpha: loss weights of domain classifier to the source classifier (default = 0.6)
+# alpha_lr: learning rate for the domain classifier (alpha_lr*0.001, default = 5)
+
+# init_train: whether to perform pre-training process
+# init_train_epoch: iteration number for the pre-training process (default = 10)
 def train( Xs, ys, Xt, yt=None, 
           emb_dim=2,
           batch_size = 64, 

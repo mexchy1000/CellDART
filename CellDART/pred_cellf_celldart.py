@@ -54,14 +54,14 @@
 # init_train_epoch: iteration number of pre-train (default = 10)
 
 # outdir: the directory to save output files (models and results)
-# return_anndata: return spatial AnnData file with predicted cell fraction in .obs
+# return_anndata: return spatial AnnData file with predicted cell fraction in .obs (default = True)
 
 def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False, 
                         gpu=True, spdir=None, sp10x=True, spfilter=False, spfilgene=5, spfilspot=50, 
                         scdir=None, sc_10x_mtx=True, sc10x_h5=False, sctranspose=False, 
                         celltype='cluster', num_markers=20,
                         nmix=10, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512, emb_dim=64, n_iterations=3000, init_train_epoch=10, 
-                        outdir='./CellDART_output', return_anndata=False):
+                        outdir='./CellDART_output', return_anndata=True):
 
     import os
     if gpu:
@@ -79,8 +79,8 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     import pandas as pd
     import numpy as np
 
-    import utils
-    import da_cellfraction
+    from CellDART import utils
+    from CellDART import da_cellfraction
     
     ## Create directory if it does not exist
     if not os.path.exists(outdir):
@@ -296,3 +296,4 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     print('Model and python data files were saved')
 
     if return_anndata: return(spatial_raw)
+    else: return(df)

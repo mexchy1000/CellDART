@@ -14,16 +14,35 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
   Learning rate = 0.001 * alpha_lr = 0.005  
 
 ## Code Example  
-Example File: CellDART_example_mousebrain_markers.ipynb 
+python: CellDART_example_mousebrain_markers.ipynb 
+R wrap: Please refer to the '/vignettes/R_example.R' file
 
 ## Python function for CellDART (pred_cellf_celldart)  
-**from CellDART.pred_cellf_celldart import pred_cellf_celldart**  
+### Install conda environment and add jupyter kernel  
+  conda create -n CellDART python=3.7.12 -c conda-forge  
+  conda activate CellDART  
+  pip install git+https://github.com/mexchy1000/CellDART.git  
+  python -m ipykernel install --user --name CellDART --display-name CellDART  
+
+### Dependency (python)  
+python 3.7  
+numpy 1.21.6  
+pandas 1.3.5  
+tensorflow 1.14.0  
+scanpy 1.5.1  
+seaborn 0.11.2  
+keras 2.3.1  
+h5py 2.10.0 
+
+### Function and parameters
+```Plain Text
+from CellDART.pred_cellf_celldart import pred_cellf_celldart  
 adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
-　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
-　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
-　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
-　　　　　　　　　　　　　　　outdir='./CellDART_output', return_anndata=True)
-                               
+        　　　　　　　　　　　　　　　gpu=True, celltype='cluster', num_markers=20,  
+        　　　　　　　　　　　　　　　nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
+        　　　　　　　　　　　　　　　emb_dim=64, n_iterations=3000, init_train_epoch=10,  
+        　　　　　　　　　　　　　　　outdir='./CellDART_output', return_anndata=True)
+```        
 **(1) adata_sp:** spatial data (AnnData object) with raw count matrix to be used in predicting cell fraction (default: None)  
 **(2) adata_sc:** single-cell data (AnnData object) with raw count matrix to be used in making pseudospots (default: None)  
 **(3) count_from_raw:** whether to extract count matrix frow .raw of AnnData (default: False)  
@@ -42,26 +61,16 @@ adata_sp = **pred_cellf_celldart**(adata_sp=adata_sp, adata_sc=adata_sc, count_f
 **(14) outdir:** the directory to save output files (models and results)  
 **(15) return_anndata:** whether to return spatial AnnData file with predicted cell fraction in .obs (default: False)  
 
-## Dependency (python)  
-  python 3.7  
-  numpy 1.21.6  
-  pandas 1.3.5  
-  tensorflow 1.14.0  
-  scanpy 1.5.1  
-  seaborn 0.11.2  
-  keras 2.3.1  
-  h5py 2.10.0  
-  
-### Install conda environment and CellDART  
-  conda create -n CellDART python=3.7.12 -c conda-forge  
-  conda activate CellDART  
-  pip install git+https://github.com/mexchy1000/CellDART.git  
+## R wrap function for CellDART using reticulate  
+    devtools::install_github("mexychy1000/CellDART", force = T)  
+    library(CellDART)  
+    help(CellDART)  # Explanation for the parameters and short examples
 
-## R wrapper for CellDART using reticulate
-  Please refer to the '/CellDART_R_wrap/R_example.R' file.  
-  All the files in 'CellDART_R_wrap' should be in the same folder.  
-  Virtual environment (env.select="virtual") or conda environment (env.select="conda") can be used while running function 'pred_cellf_celldart'  
-  Detailed explanation is in '/CellDART_R_wrap/Read_R_wrap.md' file.  
+  ### Installation in Linux distributions  
+  Virtual environment (env.select="virtual") or conda environment (env.select="conda") will be automatically installed while running function 'pred_cellf_celldart'  
+  Detailed explanation is in '/R/Read_R_wrap.md' file.  
+  ### Installation in Windows  
+  Install conda environment first and then run the function with env.select='conda' and python.install=F   
   
 ## Dependency (R wrapper)
   Seurat 4.0.5  
