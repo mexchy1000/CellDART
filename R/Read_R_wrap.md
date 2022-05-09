@@ -1,7 +1,10 @@
 ## R wrap function for CellDART
-    devtools::install_github("mexychy1000/CellDART", force = T)  
-    library(CellDART)  
-    help(CellDART)  # Explanation for the parameters and short examples
+  ```Plain Text
+  devtools::install_github("mexchy1000/CellDART", build_vignettes = T, force = T)  
+  library(CellDART)  
+  help(pred_cellf_celldart)  # Explanation for the parameters and short examples  
+  browseVignettes("CellDART")  # Browse for the vignettes (/doc/introduction.html)
+  ```
   ### Installation in Linux distributions  
   Virtual environment (env.select="virtual") or conda environment (env.select="conda") will be automatically installed while running function 'pred_cellf_celldart'  
   ### Installation in Windows  

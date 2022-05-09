@@ -65,9 +65,10 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
 
 ## R wrap function for CellDART using reticulate  
   ```Plain Text
-  devtools::install_github("mexychy1000/CellDART", force = T)  
+  devtools::install_github("mexchy1000/CellDART", build_vignettes = T, force = T)  
   library(CellDART)  
-  help(CellDART)  # Explanation for the parameters and short examples
+  help(pred_cellf_celldart)  # Explanation for the parameters and short examples  
+  browseVignettes("CellDART")  # Browse for the vignettes (/doc/introduction.html)
   ```
   ### Dependency (R wrapper)
   ```Plain Text
