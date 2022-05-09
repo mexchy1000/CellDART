@@ -84,7 +84,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
   # Select between using reticulate virtual environment or conda environment ("virtual" or "conda")
   if (env.select=="virtual"){
     # Setting virtual environment with reticulate  
-    if (!(virtual.env.name %in% reticulate::virtualenv_list())){
+    if (!(env.name %in% reticulate::virtualenv_list())){
       ## Python dependencies use python version 3.7
       if (is.null(python_path)){
         reticulate::virtualenv_create(envname = env.name, version = '3.7.12')
