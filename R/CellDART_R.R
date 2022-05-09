@@ -66,7 +66,7 @@
 pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
                                 sp_subset=FALSE, spot.cluster.name='seurat_clusters',
                                 spot.cluster.of.interest=NULL,
-                                env.select='virtual', python_install=F,
+                                env.select='virtual', python.install=F,
                                 python_path=NULL, env.name='CellDART',
                                 gpu=TRUE, metadata_celltype='celltype',
                                 num_markers=20, seed_num=0,

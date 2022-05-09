@@ -12,7 +12,7 @@ pred_cellf_celldart(
   spot.cluster.name = "seurat_clusters",
   spot.cluster.of.interest = NULL,
   env.select = "virtual",
-  python_install = F,
+  python.install = F,
   python_path = NULL,
   env.name = "CellDART",
   gpu = TRUE,
@@ -43,6 +43,8 @@ pred_cellf_celldart(
 \item{spot.cluster.of.interest}{name of each spot clusters to be used (default: NULL)}
 
 \item{env.select}{select between using reticulate virtual environment or conda environment (default: "conda")}
+
+\item{python.install}{whether to automatically install python version 3.7.12}
 
 \item{python_path}{path for the python 3.7. (default: NULL)
 \itemize{
@@ -75,8 +77,6 @@ pred_cellf_celldart(
 \item{n_iterations}{iteration number for the adversarial learning (default = 3000)}
 
 \item{init_train_epoch}{iteration number for the pre-training process (default = 10)}
-
-\item{python.install}{whether to automatically install python version 3.7.12}
 }
 \value{
 spatial data (Seurat object) with predicted cell fraction in metadata (meta.data)
