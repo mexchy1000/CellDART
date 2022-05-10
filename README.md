@@ -40,7 +40,7 @@ h5py 2.10.0
 ```Plain Text
 from CellDART.pred_cellf_celldart import pred_cellf_celldart  
 adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_raw = False,  
-        　　　　　　　　　　　   gpu=True, celltype='cluster', num_markers=20,  
+        　　　　　　　　　　　   gpu=True, celltype='celltype', num_markers=20,  
         　　　　　　　　　　　　 nmix=8, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512,  
         　　　　　　　　　　　　 emb_dim=64, n_iterations=3000, init_train_epoch=10,  
         　　　　　　　　　　　　 outdir='./CellDART_output', return_anndata=True)
@@ -51,7 +51,7 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
 -> non-normalized raw count matrix should be contained in the AnnData .raw file  
 -> if False, then utilize the count matrices saved in adata_sp and adata_sc directly  
 **(4) gpu:** check whether to use gpu (True) or not (False) (default = True)  
-**(5) celltype:** column name for single-cell annotation data in .obs (default: 'cluster')  
+**(5) celltype:** column name for single-cell annotation data in .obs (default: 'celltype')  
 **(6) num_markers:** number of selected marker genes in each celltype (default = 20)   
 **(7) nmix:** sampling number of cells in pseudospot (default = 10)  
 **(8) npseudo:** a total number of pseudospots (default = 20,000)  
@@ -68,9 +68,9 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
   devtools::install_github("mexchy1000/CellDART", build_vignettes = T, force = T)  
   library(CellDART)  
   help(pred_cellf_celldart)  # Explanation for the parameters and short examples  
-  browseVignettes("CellDART")  # Browse for the vignettes (/doc/introduction.html)
+  browseVignettes("CellDART")  # Browse for the vignettes (/vignettes/introduction.Rmd)
   ```
-
+  ### Function and additional parameters
   ```Plain Text
   # Using conda environment (environment will be automatically installed in Linux distributions)
   # If using Windows, then install conda environment first and then run the function below with python.install = F
@@ -83,7 +83,8 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
                                        num_markers=20, seed_num=0,
                                        nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
                                        emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
-
+  ```
+  ```Plain Text
   # Using virtual environment (environment will be automatically installed in Linux distributions)
   # Not recommended for Windows
   sp_data_cellf <- pred_cellf_celldart(sp_data, sc_data, outdir = '.',
@@ -96,6 +97,19 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
                                        nmix=8, npseudo=20000, alpha=0.6,alpha_lr=5,
                                        emb_dim=64,batch_size=512,n_iterations=3000, init_train_epoch=10)
   ```
+  **(1) outdir:** the directory to save output files (models and results) (default = '.')  
+  **(2) sp_subset:** whether to subset spatial data and calculate for specific spot cluster (default = FALSE)  
+  **(3) spot.cluster.name:** group name of the cluster used for subsetting spatial data (default = 'seurat_clusters')  
+  **(4) spot.cluster.of.interest:** name of each spot clusters to be used (default = NULL)  
+  **(5) env.select:** select between using reticulate virtual environment or conda environment (default = 'conda')  
+  -> either of the selection will search the already installed environment  
+  -> if environment is not found, then it will automatically install the new environment  
+  **(6) python.install:** whether to automatically install python version 3.7.12 (default = F)  
+  -> For Windows, set python.install = F  
+  **(7) python_path:** path for the python 3.7.12 (default = NULL)  
+  **(8) env.name:** name of the virtual or conda environment to use for the analysis (default = 'CellDART')  
+  **(9) metadata_celltype:** column name for single-cell annotation data in metadata (default = 'celltype')  
+
   ### Dependency (R wrapper)
   ```Plain Text
   Seurat 4.0.5  

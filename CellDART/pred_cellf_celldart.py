@@ -39,7 +39,7 @@
 # sc10x_h5: check whether single-cell data is 10x genomics formatted hdf5 file (True) or not (False)
 # sctranspose: if sc10x_mtx and sc10x_h5 is F, check whether loaded matrix should be transposed (True) or not (False)
 
-# celltype: column name for single-cell annotation data in .obs (default: 'cluster')
+# celltype: column name for single-cell annotation data in .obs (default: 'celltype')
 # num_markers: number of selected marker genes in each cell-type (default = 20)
 
 # seed_num: seed to be used in random sampling (default = 0)
@@ -61,7 +61,7 @@
 def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False, 
                         gpu=True, spdir=None, sp10x=True, spfilter=False, spfilgene=5, spfilspot=50, 
                         scdir=None, sc_10x_mtx=True, sc10x_h5=False, sctranspose=False, 
-                        celltype='cluster', num_markers=20, seed_num=0, 
+                        celltype='celltype', num_markers=20, seed_num=0, 
                         nmix=10, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512, emb_dim=64, n_iterations=3000, init_train_epoch=10, 
                         outdir='./CellDART_output', return_anndata=True):
 

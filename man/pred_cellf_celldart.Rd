@@ -52,7 +52,7 @@ pred_cellf_celldart(
 \item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
 }}
 
-\item{env.name}{name of the virtual or conda environment to use for CellDART analysis (default: 'spSeudoMap')}
+\item{env.name}{name of the virtual or conda environment to use for CellDART analysis (default: 'CellDART')}
 
 \item{gpu}{check whether to use gpu (True) or not (False) (default = True)}
 
