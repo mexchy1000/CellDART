@@ -1,8 +1,8 @@
 #' R wrap function to implement CellDART
 #' @description Cell type inference by domain adaptation of single-cell and spatial transcriptomic data
 #'
-#' @param sp_data spatial data (AnnData object) to be used in predicting cell fraction (default: None): count matrix should be non-normalied raw data.
-#' @param sc_data single-cell data (AnnData object) to be used in making pseudospots (default: None): count matrix should be non-normalied raw data.
+#' @param sp_data spatial data (Seurat object) to be used in predicting cell fraction: non-normalized raw data should be in 'counts' slot
+#' @param sc_data single-cell data (Seurat object) to be used in making pseudospots: non-normalized raw data should be in 'counts' slot
 #'
 #' @param outdir the directory to save output files (models and results) (default = '.')
 #'

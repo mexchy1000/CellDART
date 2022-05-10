@@ -11,7 +11,7 @@ pred_cellf_celldart(
   sp_subset = FALSE,
   spot.cluster.name = "seurat_clusters",
   spot.cluster.of.interest = NULL,
-  env.select = "virtual",
+  env.select = "conda",
   python.install = F,
   python_path = NULL,
   env.name = "CellDART",
@@ -30,9 +30,9 @@ pred_cellf_celldart(
 )
 }
 \arguments{
-\item{sp_data}{spatial data (AnnData object) to be used in predicting cell fraction (default: None): count matrix should be non-normalied raw data.}
+\item{sp_data}{spatial data (Seurat object) to be used in predicting cell fraction: non-normalized raw data should be in 'counts' slot}
 
-\item{sc_data}{single-cell data (AnnData object) to be used in making pseudospots (default: None): count matrix should be non-normalied raw data.}
+\item{sc_data}{single-cell data (Seurat object) to be used in making pseudospots: non-normalized raw data should be in 'counts' slot}
 
 \item{outdir}{the directory to save output files (models and results) (default = '.')}
 
