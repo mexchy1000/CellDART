@@ -20,7 +20,7 @@ Imports:
       Seurat (>= 4.0.5),
       dplyr (>= 1.0.7),
       reticulate (>= 1.22)
+      rmarkdown
 Suggests: 
-    knitr,
-    rmarkdown
+    knitr
 VignetteBuilder: knitr    
