@@ -15,6 +15,9 @@ CellDART is a tool to estimate cell fraction of spatial transcriptomic spots usi
 
 ## Code Example  
 python: CellDART_example_mousebrain_markers.ipynb  
+-> example file that shows the whole process step by step  
+-> the pred_cellf_celldart function is a compressed version of all the steps shown in the notebook file  
+-> see the below example how to use the function  
 R wrap: Please refer to the '/vignettes/introduction.Rmd' file  
 
 ## Python function for CellDART (pred_cellf_celldart)  
