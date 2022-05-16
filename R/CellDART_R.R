@@ -97,7 +97,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
       #                   "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
 
       # Create virtual env and install dependencies
-      reticulate::virtualenv_install(env.name, packages = 'CellDART', ignore_installed=T, 
+      reticulate::virtualenv_install(env.name, packages = 'pip', ignore_installed=T, 
                                      pip_options = "git+https://github.com/mexchy1000/CellDART.git")
       reticulate::use_virtualenv(env.name, required = T)
     }
@@ -115,7 +115,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
       }
 
       # Create conda env and install dependencies
-      reticulate::conda_install(env.name, packages='CellDART', ignore_installed=T,
+      reticulate::conda_install(env.name, ignore_installed=T,
                                 pip = TRUE, "git+https://github.com/mexchy1000/CellDART.git")
     }
     # Apply conda environment
