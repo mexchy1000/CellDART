@@ -12,12 +12,12 @@
 #' @param metadata_celltype column name for single-cell annotation data in metadata (default: 'celltype')
 #'
 #' @param env.select select between using reticulate virtual environment or conda environment (default: "conda")
-#' @param python.install whether to automatically install python version 3.7.12
+#' @param python.install whether to automatically install python version 3.8.13
 #'
-#' @param python_path path for the python 3.7. (default: NULL)
+#' @param python_path path for the python 3.8. (default: NULL)
 #' \itemize{
-#'   \item If NULL, python version 3.7.12 will be installed (valid for Linux)
-#'   \item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
+#'   \item If NULL, python version 3.8.13 will be installed (valid for Linux)
+#'   \item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.8)
 #' }
 #'
 #' @param env.name name of the virtual or conda environment to use for CellDART analysis (default: 'CellDART')
@@ -78,14 +78,14 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
   options(warn = -1)
 
   if (python.install){
-    reticulate::install_python(version = '3.7.12')
+    reticulate::install_python(version = '3.8.13')
   }
   
   # Select between using reticulate virtual environment or conda environment ("virtual" or "conda")
   if (env.select=="virtual"){
     # Setting virtual environment with reticulate  
     if (!(env.name %in% reticulate::virtualenv_list())){
-      ## Python dependencies use python version 3.7
+      ## Python dependencies use python version 3.8
       if (is.null(python_path)){
         reticulate::virtualenv_create(envname = env.name, version = '3.8.13')
       } else if (python_path=="current") {
@@ -105,7 +105,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
     reticulate::use_virtualenv(env.name, required = T)
   } else if (env.select=="conda"){
     if (!(env.name %in% reticulate::conda_list()[['name']])){
-      ## Python dependencies use python version 3.7
+      ## Python dependencies use python version 3.8
       if (is.null(python_path)){
         reticulate::conda_create(envname = env.name, python_version = '3.8.13')
       } else if (python_path=="current") {
