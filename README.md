@@ -23,21 +23,19 @@ R wrap: Please refer to the '/vignettes/introduction.Rmd' file
 ## Python function for CellDART (pred_cellf_celldart)  
 ### Install conda environment and add jupyter kernel  
 ```Plain Text
-  conda create -n CellDART python=3.7.12 -c conda-forge  
+  conda create -n CellDART python=3.8  
   conda activate CellDART  
   pip install git+https://github.com/mexchy1000/CellDART.git  
   python -m ipykernel install --user --name CellDART --display-name CellDART  
 ```
 ### Dependency (python)  
 ```Plain Text
-python 3.7  
-numpy 1.21.6  
-pandas 1.3.5  
-tensorflow 1.14.0  
-scanpy 1.5.1  
-seaborn 0.11.2  
-keras 2.3.1  
-h5py 2.10.0 
+python 3.8
+tensorflow 2.9.1
+numpy 1.20.3
+pandas 1.4.3
+scanpy 1.9.1
+jupyter 1.0.0
 ```
 ### Function and parameters
 ```Plain Text
@@ -107,9 +105,9 @@ adata_sp = pred_cellf_celldart(adata_sp=adata_sp, adata_sc=adata_sc, count_from_
   **(5) env.select:** select between using reticulate virtual environment or conda environment (default = 'conda')  
   -> either of the selection will search the already installed environment  
   -> if environment is not found, then it will automatically install the new environment  
-  **(6) python.install:** whether to automatically install python version 3.7.12 (default = F)  
+  **(6) python.install:** whether to automatically install python version 3.8.13 (default = F)  
   -> For Windows, set python.install = F  
-  **(7) python_path:** path for the python 3.7.12 (default = NULL)  
+  **(7) python_path:** path for the python 3.8.13 (default = NULL)  
   **(8) env.name:** name of the virtual or conda environment to use for the analysis (default = 'CellDART')  
   **(9) metadata_celltype:** column name for single-cell annotation data in metadata (default = 'celltype')  
 

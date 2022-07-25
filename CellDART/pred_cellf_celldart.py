@@ -1,70 +1,69 @@
-## Function to implement CellDART in python
-
-# adata_sp: spatial data (AnnData object) to be used in predicting cell fraction (default: None)
-# -> If None, then provide spdir where spatial datasets are saved (formats are explained below)
-# adata_sc: single-cell data (AnnData object) to be used in making pseudospots (default: None)
-# -> If None, then provide scdir where single-cell datasets are saved (formats are explained below)
-# count_from_raw: whether to extract count matrix frow .raw of AnnData
-# -> non-normalized count matrix should be contained in the AnnData .raw file
-# -> if False, then utilize the count matrices saved in adata_sp and adata_sc directly
-
-# gpu: check whether to use gpu (True) or not (False) (default = True)
-
-# spdir: file directory to find or save spatial data
-# -> In case of utilizing already saved spatial data, otherwise, put None
-# -> Visium data should be separated in different folders
-## Example directory (spatial)
-# -> two spatial datasets (10x visium format)
-# ./Mouse_sp/first/filtered_feature_bc_matrix.h5, ./Mouse_sp/first/spatial/tissue_hires_image.png, ./Mouse_sp/first/spatial/tissue_lowres_image.png,
-# ./Mouse_sp/first/spatial/scalefactors_json.json, ./Mouse_sp/first/spatial/tissue_positions_list.csv
-# second dataset directory starts with ./Mouse_sp/second/.., others are same as above.
-
-# sp10x: whether the spatial data is 10x Visium format (True) or not (False) (default: True)
-# spfilter: check whether to filter the number of cells and genes in spatial data (True: run filter)
-# spfilgene: keep genes that are expressed in at least 'spfilgene' number of cells (default = 5)
-# spfilspot: keep spots with at least 'spfilcell' counts (default = 50)
-
-# scdir: file directory to find or save single-cell data
-# -> In case of utilizing already saved sc data, otherwise, put None
-# -> each single-cell data should be separated in different folders 
-# -> each file formats should be among 10x format or others (.mtx.gz, .h5ad, h5, .csv, .tsv, or .txt)
-# -> and metadata with corresponding barcode name as index should be included in metadata folder of each single-cell data
-# -> metadata should be csv format
-## Example directory (single-cell)
-# -> two single cell dataset (10x mtx format) with metadata
-# ./Mouse_sc/first/barcodes.tsv, ./Mouse_sc/first/genes.tsv, ./Mouse_sc/first/matrix.mtx, ./Mouse_sc/first/metadata/metadata.csv
-# ./Mouse_sc/second/barcodes.tsv, ./Mouse_sc/second/genes.tsv, ./Mouse_sc/second/matrix.mtx, ./Mouse_sc/first/second/metadata.csv
-
-# sc10x_mtx: check whether single-cell data is 10x genomics formatted mtx directory (True) or not (False)
-# sc10x_h5: check whether single-cell data is 10x genomics formatted hdf5 file (True) or not (False)
-# sctranspose: if sc10x_mtx and sc10x_h5 is F, check whether loaded matrix should be transposed (True) or not (False)
-
-# celltype: column name for single-cell annotation data in .obs (default: 'celltype')
-# num_markers: number of selected marker genes in each cell-type (default = 20)
-
-# seed_num: seed to be used in random sampling (default = 0)
-
-# nmix: sampling number of cells in pseudospot (default = 10)
-# npseudo: a total number of pseudospots (default = 20000)
-
-# alpha: loss weights of domain classifier to source classifier (default = 0.6)
-# alpha_lr: learning rate for domain classifier (alpha_lr*0.001, default = 5)
-# batch_size: minibatch size during the training (default = 512)
-# emb_dim: output size of dimensions for feature extractor (default = 64)
-
-# n_iterations: iteration number for the adversarial learning (default = 3000)
-# init_train_epoch: iteration number of pre-train (default = 10)
-
-# outdir: the directory to save output files (models and results)
-# return_anndata: return spatial AnnData file with predicted cell fraction in .obs (default = True)
-
 def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False, 
                         gpu=True, spdir=None, sp10x=True, spfilter=False, spfilgene=5, spfilspot=50, 
                         scdir=None, sc_10x_mtx=True, sc10x_h5=False, sctranspose=False, 
                         celltype='celltype', num_markers=20, seed_num=0, 
                         nmix=10, npseudo=20000, alpha=0.6, alpha_lr=5, batch_size=512, emb_dim=64, n_iterations=3000, init_train_epoch=10, 
                         outdir='./CellDART_output', return_anndata=True):
+    '''
+    ## Function to implement CellDART in python
+    adata_sp: spatial data (AnnData object) to be used in predicting cell fraction (default: None)
+        -> If None, then provide spdir where spatial datasets are saved (formats are explained below)
+    adata_sc: single-cell data (AnnData object) to be used in making pseudospots (default: None)
+        -> If None, then provide scdir where single-cell datasets are saved (formats are explained below)
+    count_from_raw: whether to extract count matrix frow .raw of AnnData
+        -> non-normalized count matrix should be contained in the AnnData .raw file
+        -> if False, then utilize the count matrices saved in adata_sp and adata_sc directly
 
+    gpu: check whether to use gpu (True) or not (False) (default = True)
+
+    spdir: file directory to find or save spatial data
+        -> In case of utilizing already saved spatial data, otherwise, put None
+        -> Visium data should be separated in different folders
+      Example directory (spatial)
+        -> two spatial datasets (10x visium format)
+        ./Mouse_sp/first/filtered_feature_bc_matrix.h5, ./Mouse_sp/first/spatial/tissue_hires_image.png, ./Mouse_sp/first/spatial/tissue_lowres_image.png,
+        ./Mouse_sp/first/spatial/scalefactors_json.json, ./Mouse_sp/first/spatial/tissue_positions_list.csv
+        second dataset directory starts with ./Mouse_sp/second/.., others are same as above.
+
+    sp10x: whether the spatial data is 10x Visium format (True) or not (False) (default: True)
+    spfilter: check whether to filter the number of cells and genes in spatial data (True: run filter)
+    spfilgene: keep genes that are expressed in at least 'spfilgene' number of cells (default = 5)
+    spfilspot: keep spots with at least 'spfilcell' counts (default = 50)
+
+    scdir: file directory to find or save single-cell data
+        -> In case of utilizing already saved sc data, otherwise, put None
+        -> each single-cell data should be separated in different folders 
+        -> each file formats should be among 10x format or others (.mtx.gz, .h5ad, h5, .csv, .tsv, or .txt)
+        -> and metadata with corresponding barcode name as index should be included in metadata folder of each single-cell data
+        -> metadata should be csv format
+      Example directory (single-cell)
+        -> two single cell dataset (10x mtx format) with metadata
+        ./Mouse_sc/first/barcodes.tsv, ./Mouse_sc/first/genes.tsv, ./Mouse_sc/first/matrix.mtx, ./Mouse_sc/first/metadata/metadata.csv
+        ./Mouse_sc/second/barcodes.tsv, ./Mouse_sc/second/genes.tsv, ./Mouse_sc/second/matrix.mtx, ./Mouse_sc/first/second/metadata.csv
+
+    sc10x_mtx: check whether single-cell data is 10x genomics formatted mtx directory (True) or not (False)
+    sc10x_h5: check whether single-cell data is 10x genomics formatted hdf5 file (True) or not (False)
+    sctranspose: if sc10x_mtx and sc10x_h5 is F, check whether loaded matrix should be transposed (True) or not (False)
+
+    celltype: column name for single-cell annotation data in .obs (default: 'celltype')
+    num_markers: number of selected marker genes in each cell-type (default = 20)
+
+    seed_num: seed to be used in random sampling (default = 0)
+
+    nmix: sampling number of cells in pseudospot (default = 10)
+    npseudo: a total number of pseudospots (default = 20000)
+
+    alpha: loss weights of domain classifier to source classifier (default = 0.6)
+    alpha_lr: learning rate for domain classifier (alpha_lr*0.001, default = 5)
+    batch_size: minibatch size during the training (default = 512)
+    emb_dim: output size of dimensions for feature extractor (default = 64)
+    
+    n_iterations: iteration number for the adversarial learning (default = 3000)
+    init_train_epoch: iteration number of pre-train (default = 10)
+
+    outdir: the directory to save output files (models and results)
+    return_anndata: return spatial AnnData file with predicted cell fraction in .obs (default = True)
+    '''
     import os
     if gpu:
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"

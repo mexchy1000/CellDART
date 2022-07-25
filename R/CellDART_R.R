@@ -87,14 +87,14 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
     if (!(env.name %in% reticulate::virtualenv_list())){
       ## Python dependencies use python version 3.7
       if (is.null(python_path)){
-        reticulate::virtualenv_create(envname = env.name, version = '3.7.12')
+        reticulate::virtualenv_create(envname = env.name, version = '3.8.13')
       } else if (python_path=="current") {
         reticulate::virtualenv_create(envname = env.name, python = NULL)
       } else {
         reticulate::virtualenv_create(envname = env.name, python = python_path)
       }
-      # python_depend = c("scanpy==1.5.1","numba==0.52.0","pandas","numpy",
-      #                   "keras==2.3.1","tensorflow==1.14.0","tensorflow-gpu")
+      # python_depend = c("scanpy==1.9.1","pandas","numpy",
+      #                   "tensorflow==2.9.1","tensorflow-gpu==2.9.1")
 
       # Create virtual env and install dependencies
       reticulate::virtualenv_install(env.name, packages = 'pip', ignore_installed=T, 
@@ -107,7 +107,7 @@ pred_cellf_celldart <- function(sp_data, sc_data, outdir='.',
     if (!(env.name %in% reticulate::conda_list()[['name']])){
       ## Python dependencies use python version 3.7
       if (is.null(python_path)){
-        reticulate::conda_create(envname = env.name, python_version = '3.7.12')
+        reticulate::conda_create(envname = env.name, python_version = '3.8.13')
       } else if (python_path=="current") {
         reticulate::conda_create(envname = env.name, python = NULL)
       } else {

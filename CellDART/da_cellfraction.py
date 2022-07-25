@@ -1,15 +1,19 @@
 # Suppress tensorflow warnings
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow.compat.v1 import logging
-logging.set_verbosity(logging.ERROR)
 
 import numpy as np
-from keras.layers import Input, Dense, Activation, BatchNormalization, Dropout, Lambda
-from keras.models import Model
-from keras.utils import to_categorical
+from tensorflow.compat.v1 import logging, disable_eager_execution
+logging.set_verbosity(logging.ERROR)
+# Remove compatibility issues
+disable_eager_execution()
+experimental_run_tf_function=False
+
+from tensorflow.keras.layers import Input, Dense, Activation, BatchNormalization, Dropout
+from tensorflow.keras.models import Model
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras import optimizers
 from sklearn.metrics import accuracy_score
-from keras import optimizers
 
 ### Build deep learning models for adversarial domain adaptation
 def build_models(inp_dim, emb_dim, n_cls_source, alpha=2, alpha_lr=10):
@@ -36,12 +40,12 @@ def build_models(inp_dim, emb_dim, n_cls_source, alpha=2, alpha_lr=10):
               loss_weights={'mo': 1, 'do': alpha}, metrics=['accuracy'], )
 
     source_classification_model = Model(inputs=inputs, outputs=[source_classifier])
-    source_classification_model.compile(optimizer=optimizers.adam(lr=0.001),
+    source_classification_model.compile(optimizer=optimizers.Adam(learning_rate=0.001),
               loss={'mo': 'kld'}, metrics=['mae'], )
 
 
     domain_classification_model = Model(inputs=inputs, outputs=[domain_classifier])
-    domain_classification_model.compile(optimizer=optimizers.adam(lr=alpha_lr*0.001),
+    domain_classification_model.compile(optimizer=optimizers.Adam(learning_rate=alpha_lr*0.001),
                   loss={'do': 'categorical_crossentropy'}, metrics=['accuracy'])
     
     

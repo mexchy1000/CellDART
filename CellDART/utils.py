@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from keras.utils import to_categorical
+from tensorflow.keras.utils import to_categorical
 
 def random_mix(Xs, ys, nmix=5, n_samples=10000, seed=0):
     # Define empty lists
