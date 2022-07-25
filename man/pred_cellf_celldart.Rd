@@ -44,12 +44,12 @@ pred_cellf_celldart(
 
 \item{env.select}{select between using reticulate virtual environment or conda environment (default: "conda")}
 
-\item{python.install}{whether to automatically install python version 3.7.12}
+\item{python.install}{whether to automatically install python version 3.8.12}
 
-\item{python_path}{path for the python 3.7. (default: NULL)
+\item{python_path}{path for the python 3.8. (default: NULL)
 \itemize{
-\item If NULL, python version 3.7.12 will be installed (valid for Linux)
-\item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.7)
+\item If NULL, python version 3.8.12 will be installed (valid for Linux)
+\item If "current", python interpreter associated with current virtual env (ex: r-reticulate) will be used. (version should be 3.8)
 }}
 
 \item{env.name}{name of the virtual or conda environment to use for CellDART analysis (default: 'CellDART')}
