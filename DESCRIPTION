@@ -15,7 +15,7 @@ Description: CellDART estimates the spatial distribution of cells defined by sin
 License: `use_mit_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Imports:
       Seurat (>= 4.0.5),
       dplyr (>= 1.0.7),
