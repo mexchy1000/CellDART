@@ -1,6 +1,6 @@
 Package: CellDART
 Title: Cell type inference by domain adaptation of single-cell and spatial transcriptomic data
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: 
     c(person(given = "Hongyoon",
            family = "Choi",
