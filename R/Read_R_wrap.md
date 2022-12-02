@@ -19,7 +19,7 @@
   
   #### 2. Download  
   sc_data.rds and sp_data.rds can be downloaded from:  
-  https://drive.google.com/drive/folders/1cBCeFWvSjxIP1naHBpNZ7nmJV6Ql8OdI?usp=sharing
+  https://drive.google.com/drive/folders/1zvn3rJ6vH-LYPNnuWIjqb8USSfp7YfIy?usp=sharing
   
 ### Potential error in reticulate::install_python
   "ModuleNotFoundError: No module named '_ctypes'"  
