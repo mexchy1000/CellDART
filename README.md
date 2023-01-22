@@ -1,8 +1,7 @@
 # CellDART: Cell type inference by domain adaptation of single-cell and spatial transcriptomic data
 CellDART is a tool to estimate cell fraction of spatial transcriptomic spots using domain adaptation of deep neural networks.
-
+* Cite as: Bae S, Na KJ, Koh J, Lee DS, Choi H, Kim YT. CellDART: cell type inference by domain adaptation of single-cell and spatial transcriptomic data. Nucleic Acids Res. 2022;50(10):e57.  
 ![figure1png](https://user-images.githubusercontent.com/14209383/114880774-528b8100-9e3d-11eb-9b60-41c9d0acd5fd.png)
-
 
 ## Optimal parameter choices (for brain)
   Number of total marker genes = 200 ~ 400 (or number of markers per cluster: 10 ~ 20)  
