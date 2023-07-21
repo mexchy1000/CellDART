@@ -9,6 +9,6 @@ setup(
     packages=find_packages(include=['CellDART', 'CellDART.*']),
     install_requires = ["tensorflow~=2.9.0","tensorflow-gpu~=2.9.0", 
                         "pandas~=1.4.0","numpy~=1.20.0",
-                        "scanpy","leidenalg","python-igraph",
+                        "scanpy","leidenalg","igraph",
                         "jupyter","ply","pytest"]
 )
