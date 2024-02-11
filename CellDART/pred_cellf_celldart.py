@@ -230,10 +230,10 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     lab_sc_num = np.asarray(lab_sc_num, dtype='int')
     
     # Call original normalized count (not log-normalized count)
-    adata_final = single_all.raw.to_adata()
+    adata_final = single_all.raw.to_adata().copy()
 
     # Generate count matrix for single-cell data (mat_sc)
-    adata_final = adata_final[:,inter_genes_comb].copy()
+    adata_final = adata_final[:,inter_genes_comb]
     if isinstance(adata_final.X, np.ndarray):
         mat_sc = adata_final.X
     else:
@@ -243,7 +243,7 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     spatial_raw = spatial_all.copy()
     
     # Generate count matrix for spatial data (mat_sp)
-    spatial_all = spatial_all[:,inter_genes_comb].copy()
+    spatial_all = spatial_all[:,inter_genes_comb]
     if isinstance(spatial_all.X, np.ndarray):
         mat_sp = spatial_all.X
     else: 
