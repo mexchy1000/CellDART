@@ -98,7 +98,7 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     if adata_sp is not None:
         if spdir is not None: 
             raise ValueError("'spdir' should be None when 'adata_sp' is provided.")
-        if count_from_raw: spatial_all = adata_sp.raw.to_adata()
+        if count_from_raw: spatial_all = adata_sp.raw.to_adata().copy()
         else: spatial_all = adata_sp.copy()     
         sc.pp.normalize_total(spatial_all, target_sum=1e4, inplace=True)
         print('Shape of the provided spatial data is',spatial_all.shape)
@@ -130,12 +130,11 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
                                                     uns_merge='unique')
         print('Shape of the merged spatial data is',spatial_all.shape)
 
-    
     ## Load and preprocess single-cell dataset
     if adata_sc is not None:
         if scdir is not None: 
             raise ValueError("'scdir' should be None when 'adata_sc' is provided.")
-        if count_from_raw: single_all = adata_sc.raw.to_adata()
+        if count_from_raw: single_all = adata_sc.raw.to_adata().copy()
         else: single_all = adata_sc.copy()
 
         # Check if the column for the cell type is included in .obs
@@ -219,7 +218,6 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     inter_genes_comb = [val for val in res_genes_ if val in spatial_all.var.index]
     print('Total number of marker genes: ',len(inter_genes_comb))
 
-    
     # Generation of an array representing cell type number
     df_sc = single_all.obs
     lab_sc_sub = df_sc[celltype]
@@ -266,7 +264,6 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     print('Size of spatial, single-cell, pseudospot, and cell fraction data:',
         mat_sp_s.shape, mat_sc_s.shape, sc_mix_s.shape, lab_mix.shape)
 
- 
     # Train the CellDART model
     embs, clssmodel = da_cellfraction.train(sc_mix_s, lab_mix, mat_sp_s, enable_dann = True,
                                             alpha=alpha, alpha_lr=alpha_lr,
@@ -278,7 +275,6 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
     # Prediction of cell fraction in each spot
     pred_sp = pd.DataFrame(clssmodel.predict(mat_sp_s))
     pred_sp.index = spatial_all.obs.index
-
 
     # Make directory for the model save
     if not os.path.exists(os.path.join(outdir,'model')):
