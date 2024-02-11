@@ -198,7 +198,7 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
         print('Shape of merged single cell data is',single_all.shape)
     
     # save the normalized data in raw
-    single_all.raw = single_all
+    single_all.raw = single_all.copy()
     
     # log-transform the count matrix
     sc.pp.log1p(single_all)
@@ -240,7 +240,7 @@ def pred_cellf_celldart(adata_sp=None, adata_sc=None, count_from_raw=False,
         mat_sc = adata_final.X.toarray()
 
     # Raw file for merged spatial data
-    spatial_raw = spatial_all
+    spatial_raw = spatial_all.copy()
     
     # Generate count matrix for spatial data (mat_sp)
     spatial_all = spatial_all[:,inter_genes_comb].copy()
