@@ -7,8 +7,8 @@ setup(
     url = "https://github.com/mexchy1000/CellDART.git",
     author = "Hongyoon Choi, Sungwoo Bae",
     packages=find_packages(include=['CellDART', 'CellDART.*']),
-    install_requires = ["tensorflow~=2.9.0","tensorflow-gpu~=2.9.0", 
-                        "pandas~=1.4.0","numpy~=1.20.0",
+    install_requires = ["tensorflow~=2.9","tensorflow-gpu~=2.9", 
+                        "pandas~=1.4","numpy~=1.20",
                         "scanpy","leidenalg","igraph",
                         "jupyter","ply","pytest"]
 )
